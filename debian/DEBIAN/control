@@ -3,7 +3,7 @@ Version: 0.1-1
 Section: devel
 Priority: optional
 Architecture: all
-Depends: apache2-mpm-worker, ruby1.9.1, rubygems1.9.1, debconf, build-essential,
+Depends: build-essential, ruby1.9.1-full, libruby1.9.1, apache2-mpm-worker, imagemagick, librmagick-ruby, graphicsmagick-libmagick-dev-compat, libmagickcore-dev, libmagickwand-dev, nodejs, libapache2-mod-passenger
 Maintainer: Concerto Team <team@concerto-signage.org>
 Description: A Digital Signage Web Application using Ruby on Rails
  A web application for displaying graphical, textual, video, and 
