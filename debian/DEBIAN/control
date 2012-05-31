@@ -1,0 +1,12 @@
+Package: concerto
+Version: 0.1-1
+Section: devel
+Priority: optional
+Architecture: all
+Depends: apache2-mpm-worker, ruby1.9.1, rubygems1.9.1, debconf, build-essential,
+Maintainer: Concerto Team <team@concerto-signage.org>
+Description: A Digital Signage Web Application using Ruby on Rails
+ A web application for displaying graphical, textual, video, and 
+ other content submitted by users on computer-driven screens
+ over a network.
+
