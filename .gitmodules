@@ -1,0 +1,3 @@
+[submodule "debian/usr/share/concerto"]
+	path = debian/usr/share/concerto
+	url = git@github.com:concerto/concerto.git
