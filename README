@@ -6,18 +6,21 @@ The Concerto code is included as a git submodule in debian/usr/share/concerto an
 To use the package from the Concerto-Signage repository:
 Use the add_concerto_repo.sh script and then run sudo apt-get install concerto
 OR
-Add the concerto-signage repository key: wget -O - http://dl.concerto-signage.org/concerto_deb_public.key | sudo apt-key add -
-Add this line to /etc/apt.sources.list (or as its own file in /etc/apt/sources.list.d/): deb http://dl.concerto-signage.org/packages/ precise main
+Add the concerto-signage repository key: 
+wget -O - http://dl.concerto-signage.org/concerto_deb_public.key | sudo apt-key add -
+Add this line to /etc/apt.sources.list (or as a file in  /etc/apt/sources.list.d/):
+ deb http://dl.concerto-signage.org/packages/ precise main
 
 After installation, the Concerto Apache configuration must be enabled (sudo a2ensite concerto) and Apache restarted (sudo service apache2 reload). The default Apache configuration may also need to be disabled (sudo a2dissite default).
 
 What does the Concerto package install?
 The package will place a concerto config file in /etc/apache2/sites-available that includes Passenger and contains a reasonable Concerto vhost configuration
+
 In addition to the dependencies listed below, the Concerto package drops the Concerto source code in /usr/share/concerto and then performs a few post-install tasks:
   Installation of global gem dependencies listed below
   Compilation of Passenger Apache extensions
   bundle install in the vendor/bundle directory of Concerto
-  Creation of sqlite-based database.yml in the Concerto config directory (If a real database is desired, this should be changed to MySQL)
+  Creation of sqlite-based database.yml in the Concerto config directory
   Setting of file permissions and a full migration and seeding of the database
 
 Concerto Package Dependencies:
