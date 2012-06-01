@@ -1,0 +1,10 @@
+<VirtualHost *:80>
+  ServerName concerto
+  DocumentRoot /usr/share/concerto/public
+  <Directory /usr/share/concerto/public>
+    RackEnv development
+    AllowOverride all
+    Options -MultiViews
+  </Directory>
+</VirtualHost>
+

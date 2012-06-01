@@ -4,4 +4,4 @@ set -e
 #Source debconf library.
 . /usr/share/debconf/confmodule
 
-gem1.9 install rake rmagick bundler
+gem1.9.1 install rake rmagick bundler passenger
