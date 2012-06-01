@@ -7,10 +7,15 @@ set -e
 gem1.9.1 install --no-ri --no-rdoc rake rmagick bundler
 gem1.9.1 install --no-ri --no-rdoc passenger -v 3.0.12
 cd /var/lib/gems/1.9.1/gems/passenger-3.0.12
+#Compile the Apache extension (can't use interactive binaries like passenger-install-apache2-module here)
 rake apache2
 cd /usr/share/concerto
 bundle install --path vendor/bundle
-cp config/database.yml.sample config/database.yml
+#We'll leave database.yml alone if it exists already
+if [ ! -f /usr/share/concerto/config/database.yml ];
+then
+  cp config/database.yml.sample config/database.yml
+fi
 mkdir tmp
 chmod -R 777 tmp
 rake db:migrate
