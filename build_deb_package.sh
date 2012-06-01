@@ -5,6 +5,7 @@ fakeroot dpkg-deb --build debian
 mv debian.deb Concerto_0.1-1_all.deb
 lintian Concerto_0.1-1_all.deb
 
+rm -rf packages.tar.gz packages/
 mkdir -p packages/conf
 cp distributions packages/conf/
 cd packages
