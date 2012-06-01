@@ -1,0 +1,5 @@
+Component: main
+Origin: dl.concerto-signage.org
+Label: apt repository
+Architecture: amd64
+Description: Concerto debian/ubuntu package repo

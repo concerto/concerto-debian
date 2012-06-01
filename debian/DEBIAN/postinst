@@ -4,4 +4,10 @@ set -e
 #Source debconf library.
 . /usr/share/debconf/confmodule
 
-gem1.9.1 install rake rmagick bundler passenger
+gem1.9.1 install rake rmagick bundler
+gem1.9.1 install passenger -v 3.0.12
+passenger-install-apache2-module
+cd /usr/share/concerto
+bundle install --path vendor/bundle
+rake db:migrate
+rake db:seed

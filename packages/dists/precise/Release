@@ -1,0 +1,37 @@
+Origin: dl.concerto-signage.org
+Label: apt repository
+Codename: precise
+Date: Fri, 01 Jun 2012 17:55:04 UTC
+Architectures: i386 amd64
+Components: main
+Description: Concerto debian/ubuntu package repo
+MD5Sum:
+ 6ea81c388543c18d717febc3a4dc1e47 832 main/binary-i386/Packages
+ d54c11b187c69fcab62d84ad92595d7c 543 main/binary-i386/Packages.gz
+ 57afd4171ae7217ba2130cf5283d127e 138 main/binary-i386/Release
+ 6ea81c388543c18d717febc3a4dc1e47 832 main/binary-amd64/Packages
+ d54c11b187c69fcab62d84ad92595d7c 543 main/binary-amd64/Packages.gz
+ 4f92295bdadc92ba81799a398c12f186 139 main/binary-amd64/Release
+ d41d8cd98f00b204e9800998ecf8427e 0 main/source/Sources
+ 7029066c27ac6f5ef18d660d5741979a 20 main/source/Sources.gz
+ 63fcf3ebf4b61fda919d6f597c75e3fb 140 main/source/Release
+SHA1:
+ 06f7273348ab25c65a7ff3b8bc5b19e543056f9d 832 main/binary-i386/Packages
+ 2efa5c1229f2332ef9722e2957e698b6e3b8b7ab 543 main/binary-i386/Packages.gz
+ 04fe289c713922f05c61daaa4d70e4e4c0fdab9e 138 main/binary-i386/Release
+ 06f7273348ab25c65a7ff3b8bc5b19e543056f9d 832 main/binary-amd64/Packages
+ 2efa5c1229f2332ef9722e2957e698b6e3b8b7ab 543 main/binary-amd64/Packages.gz
+ 5b5e370bf79d977d278250c2f184974cd57ddd9d 139 main/binary-amd64/Release
+ da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/source/Sources
+ 46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/source/Sources.gz
+ 533b11a780a94510d6b042a6fddb23df2f6bcf85 140 main/source/Release
+SHA256:
+ daac3db0f7d417fdc9d11c63a6ecb5a419ba133b5553da4e0399d1654d7a1347 832 main/binary-i386/Packages
+ c1d6bcb2a30352d258195d4364de927c73fc3dc6c2e6052cf6747e9560cd5b2d 543 main/binary-i386/Packages.gz
+ f277a9810240ff2e3051a78b8dd36167b323eced62348eba45b4490efdafaca5 138 main/binary-i386/Release
+ daac3db0f7d417fdc9d11c63a6ecb5a419ba133b5553da4e0399d1654d7a1347 832 main/binary-amd64/Packages
+ c1d6bcb2a30352d258195d4364de927c73fc3dc6c2e6052cf6747e9560cd5b2d 543 main/binary-amd64/Packages.gz
+ fda0c1a21375bfec0563e0836819075428afbe1f819ab81b842045fbd7803b74 139 main/binary-amd64/Release
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/source/Sources
+ 59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/source/Sources.gz
+ e3ea64458379dd41b96f8f18ebcae796aa39223023e6cff98e6087da75f21549 140 main/source/Release
