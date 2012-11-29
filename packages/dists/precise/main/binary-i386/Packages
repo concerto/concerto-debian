@@ -6,10 +6,10 @@ Maintainer: Concerto Team <team@concerto-signage.org>
 Priority: optional
 Section: devel
 Filename: pool/main/c/concerto/concerto_0.1-1_all.deb
-Size: 718176
-SHA256: 6ca2d8255642aa04168a2241be2c2a020294fcc49e072f71c1038ad52390637c
-SHA1: 944847757fe10c4746241748be5fc5fbc716d2c4
-MD5sum: fd757c6184c9f297242daff90289252c
+Size: 1085034
+SHA256: 9ac2ae280b194db32ed3228fe706bfae95b24b0dda990539dccf4424e6e6c58f
+SHA1: f9bcb8a9f0fab72af5743a765ec6c9d5dee4f38b
+MD5sum: a2db01481dd2bfa37323593415a50b59
 Description: Digital Signage Web Application using Ruby on Rails
  Web application for displaying graphical, textual, video, and 
  other content submitted by users on computer-driven screens
