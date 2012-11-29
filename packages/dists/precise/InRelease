@@ -4,36 +4,36 @@ Hash: SHA1
 Origin: dl.concerto-signage.org
 Label: apt repository
 Codename: precise
-Date: Thu, 29 Nov 2012 17:39:20 UTC
+Date: Thu, 29 Nov 2012 20:23:08 UTC
 Architectures: i386 amd64
 Components: main
 Description: Concerto debian/ubuntu package repo
 MD5Sum:
- af2d7baf7e34c21c7ff7cf7c02f3be22 837 main/binary-i386/Packages
- afb06fdf509389495ebf1d930ed93628 546 main/binary-i386/Packages.gz
+ 00f78a6007e27b498d66324efd4cba5b 837 main/binary-i386/Packages
+ 890d1e2aa0bf1802ab2f564477040bbc 544 main/binary-i386/Packages.gz
  57afd4171ae7217ba2130cf5283d127e 138 main/binary-i386/Release
- af2d7baf7e34c21c7ff7cf7c02f3be22 837 main/binary-amd64/Packages
- afb06fdf509389495ebf1d930ed93628 546 main/binary-amd64/Packages.gz
+ 00f78a6007e27b498d66324efd4cba5b 837 main/binary-amd64/Packages
+ 890d1e2aa0bf1802ab2f564477040bbc 544 main/binary-amd64/Packages.gz
  4f92295bdadc92ba81799a398c12f186 139 main/binary-amd64/Release
  d41d8cd98f00b204e9800998ecf8427e 0 main/source/Sources
  7029066c27ac6f5ef18d660d5741979a 20 main/source/Sources.gz
  63fcf3ebf4b61fda919d6f597c75e3fb 140 main/source/Release
 SHA1:
- 1e31253b260f24d2b45a8a1e749235fb4a070ba9 837 main/binary-i386/Packages
- 30fd7b955adddb8231a2b4bc492bdc735eed69ac 546 main/binary-i386/Packages.gz
+ 0bb276801bfcd5056837ef93b161267454884dea 837 main/binary-i386/Packages
+ 250ce448d941619698e2618d634a34ae6d553bab 544 main/binary-i386/Packages.gz
  04fe289c713922f05c61daaa4d70e4e4c0fdab9e 138 main/binary-i386/Release
- 1e31253b260f24d2b45a8a1e749235fb4a070ba9 837 main/binary-amd64/Packages
- 30fd7b955adddb8231a2b4bc492bdc735eed69ac 546 main/binary-amd64/Packages.gz
+ 0bb276801bfcd5056837ef93b161267454884dea 837 main/binary-amd64/Packages
+ 250ce448d941619698e2618d634a34ae6d553bab 544 main/binary-amd64/Packages.gz
  5b5e370bf79d977d278250c2f184974cd57ddd9d 139 main/binary-amd64/Release
  da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/source/Sources
  46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/source/Sources.gz
  533b11a780a94510d6b042a6fddb23df2f6bcf85 140 main/source/Release
 SHA256:
- c868ce54a6e4f643ea3e283a6701861b0677ed85c3929ee6b76f5567f1a26680 837 main/binary-i386/Packages
- f9455a825bb8e25926ff936cd3cb9cfc832326aaf3a53dd382f10215348d2ec9 546 main/binary-i386/Packages.gz
+ 8bc5e343e257acae14d6f5a7cde436fdaf336fbd6b425f34dc8755b8d01378b6 837 main/binary-i386/Packages
+ 1af1e4105b4a8c3b928dab5886f79f77c18a7c4b7961992aff2caa52dc9cef71 544 main/binary-i386/Packages.gz
  f277a9810240ff2e3051a78b8dd36167b323eced62348eba45b4490efdafaca5 138 main/binary-i386/Release
- c868ce54a6e4f643ea3e283a6701861b0677ed85c3929ee6b76f5567f1a26680 837 main/binary-amd64/Packages
- f9455a825bb8e25926ff936cd3cb9cfc832326aaf3a53dd382f10215348d2ec9 546 main/binary-amd64/Packages.gz
+ 8bc5e343e257acae14d6f5a7cde436fdaf336fbd6b425f34dc8755b8d01378b6 837 main/binary-amd64/Packages
+ 1af1e4105b4a8c3b928dab5886f79f77c18a7c4b7961992aff2caa52dc9cef71 544 main/binary-amd64/Packages.gz
  fda0c1a21375bfec0563e0836819075428afbe1f819ab81b842045fbd7803b74 139 main/binary-amd64/Release
  e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/source/Sources
  59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/source/Sources.gz
@@ -41,11 +41,11 @@ SHA256:
 -----BEGIN PGP SIGNATURE-----
 Version: GnuPG v1.4.11 (GNU/Linux)
 
-iQEcBAEBAgAGBQJQt533AAoJEF0zQPDV+FjUcVgIAJOvzv6GblNyZalkPoV+mJ05
-WgVAI4x5B4HPCBGe9y7LhPbJ1Lk9ZttF1kTr4GRMwNobGs3uEz4npq3QLXNw7Y8O
-jLkmueblGOMfbxzp/9AnsmZnH6KNucJ5DXXykb1c+3Nr4slvR7isUR5A1dcNH6IN
-rTKAeDg1tYIEmr8G7+2a1uu1CbcbiKZZokVKya/OxptR3YC7xiYE/hz0g0yxFT5f
-FXQaj1eQQgFvmrI7wZseRNDwF2IAPcQ5iUScCph04rb3joD+YrZr/etQNBUVl5Pu
-RIxz9HDKMOR6Xomn8YZGAgKZrZrOU4a2QWr1KjqXPYc6DjJJCNz/XlGz/iaAUFQ=
-=NZJV
+iQEcBAEBAgAGBQJQt8SaAAoJEF0zQPDV+FjUangH/i2Zm00nIrPo3L2OBtRdIEdK
+HB8zZK7nLoTn6B/7uuJ0MKSP0Tuc6UeRAuF3zeCrEzPQKnPLeBrzrRjuI2kBcTyl
+/CkuOe/ji+OCiljbe+y25dFf8qwq+Rs3D2/xjkafsbqxKvkUWfXH56KahNIRC9ak
+WdSRKV+gzuVQu2oqjFk9UcqP25DhRB63nYfxrl2KfJHj72GokCCzM1NBmQemxyLW
+PS50pwUiSjiuoTGGSyNkuRnH01lRZp1CfZkJdksR3Q3njdWBXJXjDaA1rs1WGXxD
+QPhn+tPK1bP3UvN8ck+hJvTWaKpGlaJD3H1MwVsT707Aa+uOIZcOYJw4SHUZy70=
+=/SN6
 -----END PGP SIGNATURE-----
