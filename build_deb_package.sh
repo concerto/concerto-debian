@@ -4,7 +4,7 @@
 ruby get_version_tag.rb
 version=`cat VERSION`
 
-sed -e "s/^.*Version.*$/Version: ${version}/" debian/DEBIAN/control
+sed -i -e "s/^.*Version.*$/Version: ${version}/" debian/DEBIAN/control
 
 find ./debian -type d | xargs chmod 755
 fakeroot dpkg-deb --build debian

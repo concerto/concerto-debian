@@ -1,15 +1,15 @@
 Package: concerto
-Version: 0.1-1
+Version: 0.0.0.b
 Architecture: all
 Depends: build-essential, debconf, ruby1.9.1-full, libruby1.9.1, apache2-mpm-worker, imagemagick, librmagick-ruby, libmagickcore-dev, libmagickwand-dev, nodejs, libcurl4-openssl-dev, libssl-dev, zlib1g-dev, apache2-prefork-dev, libapr1-dev, libaprutil1-dev
 Maintainer: Concerto Team <team@concerto-signage.org>
 Priority: optional
 Section: devel
-Filename: pool/main/c/concerto/concerto_0.1-1_all.deb
-Size: 1085034
-SHA256: 9ac2ae280b194db32ed3228fe706bfae95b24b0dda990539dccf4424e6e6c58f
-SHA1: f9bcb8a9f0fab72af5743a765ec6c9d5dee4f38b
-MD5sum: a2db01481dd2bfa37323593415a50b59
+Filename: pool/main/c/concerto/concerto_0.0.0.b_all.deb
+Size: 1085044
+SHA256: 056c761d98052a96e4c784a5bb7305d79c04a41b516c91650a31129ab723051c
+SHA1: 825a0dd6703a91659e58f65b4af0678633beab22
+MD5sum: faf67874952c333812e0f81779d4cd37
 Description: Digital Signage Web Application using Ruby on Rails
  Web application for displaying graphical, textual, video, and 
  other content submitted by users on computer-driven screens
