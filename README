@@ -1,7 +1,10 @@
-This repository contains everything needed to create the Concerto Debian package from the latest Concerto source code.
+This repository contains everything needed to create the Concerto Debian package.
 
 To update/build the package:
-The Concerto code is included as a git submodule in debian/usr/share/concerto and can be updated with a git pull command. The package can then be built using the build_deb_package.sh script.
+Make sure the required tools are installed (gpg,lintian, and reprepro)
+Make sure the GPG keychain (available from a committer) is installed in your home directory (you'll also need the passphrase for the key)
+Run the ./build_deb_package.sh script
+Upload the packages.tar.gz that results to the download server and unpack it
 
 To use the package from the Concerto-Signage repository:
 Use the add_concerto_repo.sh script and then run sudo apt-get install concerto
@@ -21,7 +24,6 @@ In addition to the dependencies listed below, the Concerto package drops the Con
   Compilation of Passenger Apache extensions
   bundle install in the vendor/bundle directory of Concerto
   Creation of sqlite-based database.yml in the Concerto config directory
-  Setting of file permissions and a full migration and seeding of the database
 
 Concerto Package Dependencies:
 build-essential
