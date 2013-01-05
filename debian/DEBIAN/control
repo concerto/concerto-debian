@@ -1,5 +1,5 @@
 Package: concerto
-Version: 0.0.0.b
+Version: 0.0.2.alphamoose
 Section: devel
 Priority: optional
 Architecture: all
