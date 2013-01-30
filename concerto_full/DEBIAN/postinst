@@ -1,0 +1,32 @@
+#!/bin/sh
+set -e
+
+#Source debconf library.
+. /usr/share/debconf/confmodule
+
+db_get concerto/passenger
+passenger="$RET"
+
+if [ "$passenger"  = "true" ]; then
+  gem1.9.1 install --no-ri --no-rdoc passenger -v 3.0.18
+  cd /var/lib/gems/1.9.1/gems/passenger-3.0.18
+  rake apache2
+fi
+
+gem1.9.1 install --no-ri --no-rdoc rake bundler highline
+
+chown -R www-data:www-data /usr/share/concerto
+cd /usr/share/concerto
+bundle install --path vendor/bundle
+
+#precompile all assets for production
+bundle exec rake assets:precompile
+
+#We'll leave database.yml alone if it exists already
+if [ ! -f /usr/share/concerto/config/database.yml ];
+then
+  cp config/database.yml.sample config/database.yml
+fi
+mkdir tmp
+chmod -R 777 tmp
+apache2ctl restart
