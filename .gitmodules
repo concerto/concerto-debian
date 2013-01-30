@@ -1,0 +1,6 @@
+[submodule "concerto_full/usr/share/concerto"]
+	path = concerto_full/usr/share/concerto
+	url = git://github.com/concerto/concerto.git
+[submodule "concerto_lite/usr/share/concerto"]
+	path = concerto_lite/usr/share/concerto
+	url = git://github.com/concerto/concerto.git
