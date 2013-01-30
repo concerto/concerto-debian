@@ -4,7 +4,8 @@
 ruby get_version_tag.rb
 version=`cat VERSION`
 
-rm -rf concerto_full/usr/share/concerto
+#rm -rf concerto_full/usr/share/concerto
+#rm -rf concerto_lite/usr/share/concerto
 git submodule init
 git submodule update
 cd concerto_full/usr/share/concerto
@@ -14,9 +15,6 @@ git submodule update
 cd ../../../../
 sed -i -e "s/^.*Version.*$/Version: ${version}/" concerto_full/DEBIAN/control
 
-rm -rf concerto_lite/usr/share/concerto
-git submodule init
-git submodule update
 cd concerto_lite/usr/share/concerto
 git checkout $version
 git submodule init
@@ -26,12 +24,12 @@ sed -i -e "s/^.*Version.*$/Version: ${version}/" concerto_lite/DEBIAN/control
 
 find ./concerto_full -type d | xargs chmod 755
 fakeroot dpkg-deb --build concerto_full
-mv debian.deb concerto_full_${version}_all.deb
+mv concerto_full.deb concerto_full_${version}_all.deb
 lintian concerto_full_${version}_all.deb
 
 find ./concerto_lite -type d | xargs chmod 755
 fakeroot dpkg-deb --build concerto_lite
-mv debian.deb concerto_lite_${version}_all.deb
+mv concerto_lite.deb concerto_lite_${version}_all.deb
 lintian concerto_lite__${version}_all.deb
 
 rm -rf packages.tar.gz packages/

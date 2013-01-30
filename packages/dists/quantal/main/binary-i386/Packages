@@ -1,0 +1,34 @@
+Package: concerto-full
+Version: 0.0.2.alphamoose
+Architecture: all
+Depends: build-essential, debconf, ruby1.9.1-full, libruby1.9.1, apache2-mpm-worker, imagemagick, librmagick-ruby, libmagickcore-dev, libmagickwand-dev, nodejs, libcurl4-openssl-dev, libssl-dev, zlib1g-dev, apache2-prefork-dev, libapr1-dev, libaprutil1-dev
+Maintainer: Concerto Team <team@concerto-signage.org>
+Priority: optional
+Section: devel
+Filename: pool/main/c/concerto-full/concerto-full_0.0.2.alphamoose_all.deb
+Size: 6041680
+SHA256: 9856496cf107556a2daf1e82b9e8467a7b3684cd350d835b4702431a99389316
+SHA1: f461a069453fbb05b82ba95a42dc1ca9d11ff72c
+MD5sum: c1b849e1f4477fe5c3f17c8ac719cf67
+Description: Digital Signage Web Application using Ruby on Rails
+ Web application for displaying graphical, textual, video, and 
+ other content submitted by users on computer-driven screens
+ over a network.
+
+Package: concerto-lite
+Version: 0.0.2.alphamoose
+Architecture: all
+Depends: debconf, imagemagick, libmysqlclient-dev, libmysqlclient18, libmysql-ruby1.9.1, ruby-1.9.1, libruby1.9.1
+Maintainer: Concerto Team <team@concerto-signage.org>
+Priority: optional
+Section: devel
+Filename: pool/main/c/concerto-lite/concerto-lite_0.0.2.alphamoose_all.deb
+Size: 6041036
+SHA256: 6cb1a8cb3539da1d96fc47996465ad987791abe0fe361c97dc962fc9a2a42e6c
+SHA1: 3cdec1a408e8a50f40d55d0d97c70ca55fbba4db
+MD5sum: 0c2a0706a64235b3a4560bbc110cb3e1
+Description: Digital Signage Web Application using Ruby on Rails
+ Web application for displaying graphical, textual, video, and 
+ other content submitted by users on computer-driven screens
+ over a network.
+

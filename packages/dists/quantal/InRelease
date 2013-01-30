@@ -1,0 +1,51 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+Origin: dl.concerto-signage.org
+Label: apt repository
+Codename: quantal
+Date: Wed, 30 Jan 2013 22:56:43 UTC
+Architectures: i386 amd64
+Components: main
+Description: Concerto debian/ubuntu package repo
+MD5Sum:
+ 4f4fb386efcb4e8f563d108243d7a0c5 1597 main/binary-i386/Packages
+ cd7c5b3ecf221835896d5ad778033342 717 main/binary-i386/Packages.gz
+ 57afd4171ae7217ba2130cf5283d127e 138 main/binary-i386/Release
+ 4f4fb386efcb4e8f563d108243d7a0c5 1597 main/binary-amd64/Packages
+ cd7c5b3ecf221835896d5ad778033342 717 main/binary-amd64/Packages.gz
+ 4f92295bdadc92ba81799a398c12f186 139 main/binary-amd64/Release
+ d41d8cd98f00b204e9800998ecf8427e 0 main/source/Sources
+ 7029066c27ac6f5ef18d660d5741979a 20 main/source/Sources.gz
+ 63fcf3ebf4b61fda919d6f597c75e3fb 140 main/source/Release
+SHA1:
+ 542f89a6da1e3ed6b2de169a0e7843cfb9c276bc 1597 main/binary-i386/Packages
+ a02030c604de4061a77e1e7d514d2a697d39de4c 717 main/binary-i386/Packages.gz
+ 04fe289c713922f05c61daaa4d70e4e4c0fdab9e 138 main/binary-i386/Release
+ 542f89a6da1e3ed6b2de169a0e7843cfb9c276bc 1597 main/binary-amd64/Packages
+ a02030c604de4061a77e1e7d514d2a697d39de4c 717 main/binary-amd64/Packages.gz
+ 5b5e370bf79d977d278250c2f184974cd57ddd9d 139 main/binary-amd64/Release
+ da39a3ee5e6b4b0d3255bfef95601890afd80709 0 main/source/Sources
+ 46c6643f07aa7f6bfe7118de926b86defc5087c4 20 main/source/Sources.gz
+ 533b11a780a94510d6b042a6fddb23df2f6bcf85 140 main/source/Release
+SHA256:
+ 1551175fd9fe465246abcc6301c9bd351ca027e1ea975a6b22710a593c0d6139 1597 main/binary-i386/Packages
+ 1ac13ce35b026fc937c9dbbd529de477a6565e971f46b01cbffa7db8ef898713 717 main/binary-i386/Packages.gz
+ f277a9810240ff2e3051a78b8dd36167b323eced62348eba45b4490efdafaca5 138 main/binary-i386/Release
+ 1551175fd9fe465246abcc6301c9bd351ca027e1ea975a6b22710a593c0d6139 1597 main/binary-amd64/Packages
+ 1ac13ce35b026fc937c9dbbd529de477a6565e971f46b01cbffa7db8ef898713 717 main/binary-amd64/Packages.gz
+ fda0c1a21375bfec0563e0836819075428afbe1f819ab81b842045fbd7803b74 139 main/binary-amd64/Release
+ e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855 0 main/source/Sources
+ 59869db34853933b239f1e2219cf7d431da006aa919635478511fabbfc8849d2 20 main/source/Sources.gz
+ e3ea64458379dd41b96f8f18ebcae796aa39223023e6cff98e6087da75f21549 140 main/source/Release
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.11 (GNU/Linux)
+
+iQEcBAEBAgAGBQJRCaUuAAoJEF0zQPDV+FjUlzQH/2rtkR2f0elQ3rFX1uP5lIIL
+y1J8Z9JJjPVIublZWjCaSLzESSZfm8s9O0As6k5Q8y8pBdoCMbqQyr686lTGmD0s
+XrhJx8l+zmvDXFBA4Dgs11NYAoczwg7fpAtMZcjgkrXgizCCjggeZmXG6pDdEz1L
+vCdwZtFcwzVoW51xFPVvl0ISQjcfkLJItuV+gKybq7mRstjk59IpV8yXwBhDRysO
+cZUZ3S91fhem73r9/irga2WXwQYZBb6JKWUZhaVXi1bLImcYuqPSA2IAkcZef2j6
+REBPTFTvlU96UwUw99SlVj4zZy/M32h09xHjEpowMFSJYKytAzrgRPfz8XC0aX8=
+=XKSx
+-----END PGP SIGNATURE-----
