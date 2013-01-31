@@ -8,10 +8,7 @@ gem1.9.1 install --no-ri --no-rdoc rake bundler highline
 
 chown -R www-data:www-data /usr/share/concerto
 cd /usr/share/concerto
-bundle install --path vendor/bundle
-
-#precompile assets for production mode
-bundle exec rake assets:precompile
+bundle install --without development --path vendor/bundle
 
 #We'll leave database.yml alone if it exists already
 if [ ! -f /usr/share/concerto/config/database.yml ];
