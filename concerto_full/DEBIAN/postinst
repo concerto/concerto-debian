@@ -19,9 +19,6 @@ chown -R www-data:www-data /usr/share/concerto
 cd /usr/share/concerto
 bundle install --path vendor/bundle
 
-#precompile all assets for production
-bundle exec rake assets:precompile
-
 #We'll leave database.yml alone if it exists already
 if [ ! -f /usr/share/concerto/config/database.yml ];
 then
