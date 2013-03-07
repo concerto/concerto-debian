@@ -6,7 +6,7 @@ def main
   require 'highline/import'
 
   file = File.open("/etc/passwords_changed")
-  changed = file.read
+  changed = file.read.chomp
   if changed == "true"
     puts "Passwords are set"
     exit 0
