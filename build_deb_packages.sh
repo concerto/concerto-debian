@@ -4,21 +4,17 @@
 ruby get_version_tag.rb
 version=`cat VERSION`
 
-#rm -rf concerto_full/usr/share/concerto
-#rm -rf concerto_lite/usr/share/concerto
-git submodule init
-git submodule update
 cd concerto_full/usr/share/concerto
+git checkout .
+git pull
 git checkout $version
-git submodule init
-git submodule update
 cd ../../../../
 sed -i -e "s/^.*Version.*$/Version: ${version}/" concerto_full/DEBIAN/control
 
 cd concerto_lite/usr/share/concerto
+git checkout .
+git pull
 git checkout $version
-git submodule init
-git submodule update
 cd ../../../../
 sed -i -e "s/^.*Version.*$/Version: ${version}/" concerto_lite/DEBIAN/control
 
