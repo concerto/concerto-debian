@@ -15,7 +15,6 @@ fi
 
 gem1.9.1 install --no-ri --no-rdoc rake bundler highline
 
-chown -R www-data:www-data /usr/share/concerto
 cd /usr/share/concerto
 bundle install --path vendor/bundle
 
@@ -26,4 +25,5 @@ then
 fi
 mkdir tmp
 chmod -R 777 tmp
+chown -R www-data:www-data /usr/share/concerto
 apache2ctl restart

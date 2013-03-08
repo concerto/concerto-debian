@@ -1,9 +1,9 @@
 Package: concerto-full
-Version: 0.0.2.alphamoose
+Version: 0.0.3.bravochicken
 Section: devel
 Priority: optional
 Architecture: all
-Depends: build-essential, debconf, ruby1.9.1-full, libruby1.9.1, apache2-mpm-worker, imagemagick, librmagick-ruby, libmagickcore-dev, libmagickwand-dev, libcurl4-openssl-dev, libssl-dev, zlib1g-dev, apache2-prefork-dev, libapr1-dev, libaprutil1-dev, libsqlite3-dev, nodejs
+Depends: build-essential, debconf, ruby1.9.1-full, libruby1.9.1, apache2-mpm-worker, imagemagick, librmagick-ruby, libmagickcore-dev, libmagickwand-dev, libcurl4-openssl-dev, libssl-dev, zlib1g-dev, apache2-prefork-dev, libapr1-dev, libaprutil1-dev, libsqlite3-dev, nodejs, git-core
 Maintainer: Concerto Team <team@concerto-signage.org>
 Description: Digital Signage Web Application using Ruby on Rails
  Web application for displaying graphical, textual, video, and 
