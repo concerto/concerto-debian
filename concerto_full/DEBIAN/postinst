@@ -26,4 +26,5 @@ fi
 mkdir tmp
 chmod -R 777 tmp
 chown -R www-data:www-data /usr/share/concerto
+chmod 775 /usr/share/concerto/config/database.yml
 apache2ctl restart
