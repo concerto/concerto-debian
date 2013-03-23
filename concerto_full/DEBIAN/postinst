@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+#set -e
 
 #Source debconf library.
 . /usr/share/debconf/confmodule
@@ -15,16 +15,17 @@ fi
 
 gem1.9.1 install --no-ri --no-rdoc rake bundler highline
 
-cd /usr/share/concerto
-bundle install --path vendor/bundle
-
 #We'll leave database.yml alone if it exists already
 if [ ! -f /usr/share/concerto/config/database.yml ];
 then
-  cp config/database.yml.sample config/database.yml
+  cp /usr/share/concerto/config/database.yml.sample /usr/share/concerto/config/database.yml
 fi
-mkdir tmp
-chmod -R 777 tmp
+mkdir /usr/share/concerto/tmp
+chmod -R 777 /usr/share/concerto/tmp
 chown -R www-data:www-data /usr/share/concerto
 chmod 775 /usr/share/concerto/config/database.yml
+
+cd /usr/share/concerto
+bundle install --path=vendor/bundle
+
 apache2ctl restart
