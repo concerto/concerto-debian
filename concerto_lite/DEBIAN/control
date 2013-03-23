@@ -1,9 +1,9 @@
 Package: concerto-lite
-Version: 0.0.3.bravochicken
+Version: 0.1.0.charliehorse
 Section: devel
 Priority: optional
 Architecture: all
-Depends: debconf, imagemagick, libmysqlclient-dev, libmysqlclient18, libmysql-ruby1.9.1, ruby1.9.1-full, libruby1.9.1, librmagick-ruby, libmagickcore-dev, libmagickwand-dev, libsqlite3-dev, nodejs, git-core
+Depends: debconf, imagemagick, libmysqlclient-dev, libmysqlclient18, libmysql-ruby1.9.1, ruby1.9.1-full, libruby1.9.1, librmagick-ruby, libmagickcore-dev, libmagickwand-dev, libsqlite3-dev, nodejs, build-essential
 Maintainer: Concerto Team <team@concerto-signage.org>
 Description: Digital Signage Web Application using Ruby on Rails
  Web application for displaying graphical, textual, video, and 
