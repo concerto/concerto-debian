@@ -1,8 +1,0 @@
-Origin: dl.concerto-signage.org
-Label: apt repository
-Codename: quantal
-Architectures: i386 amd64 source
-Components: main
-Description: Concerto debian/ubuntu package repo
-SignWith: yes
-Pull: precise

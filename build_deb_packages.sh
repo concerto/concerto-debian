@@ -32,7 +32,7 @@ rm -rf packages.tar.gz packages/
 mkdir -p packages/conf
 cp distributions packages/conf/
 cd packages
-reprepro --ask-passphrase -Vb . includedeb quantal ~/concerto-debian/concerto_full_${version}_all.deb
-reprepro --ask-passphrase -Vb . includedeb quantal ~/concerto-debian/concerto_lite_${version}_all.deb
+reprepro --ask-passphrase -Vb . includedeb raring ~/concerto-debian/concerto_full_${version}_all.deb
+reprepro --ask-passphrase -Vb . includedeb raring ~/concerto-debian/concerto_lite_${version}_all.deb
 cd ..
 tar -czvf packages.tar.gz packages
