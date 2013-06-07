@@ -8,8 +8,8 @@ db_get concerto/passenger
 passenger="$RET"
 
 if [ "$passenger"  = "true" ]; then
-  gem1.9.1 install --no-ri --no-rdoc passenger -v 3.0.18
-  cd /var/lib/gems/1.9.1/gems/passenger-3.0.18
+  gem1.9.1 install --no-ri --no-rdoc passenger -v 4.0.5
+  cd /var/lib/gems/1.9.1/gems/passenger-4.0.5
   rake apache2
 fi
 
