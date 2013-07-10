@@ -18,3 +18,6 @@ chmod 775 /usr/share/concerto/config/database.yml
 
 cd /usr/share/concerto
 bundle install --without development --path=vendor/bundle
+
+update-rc.d concerto defaults
+/etc/init.d/concerto start
