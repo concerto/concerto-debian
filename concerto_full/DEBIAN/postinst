@@ -32,4 +32,7 @@ rm -rf /usr/share/concerto/public/assets
 cd /usr/share/concerto
 bundle install --path=vendor/bundle
 
+update-rc.d concerto defaults
+/etc/init.d/concerto start
+
 apache2ctl restart
