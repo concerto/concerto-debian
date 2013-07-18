@@ -8,7 +8,6 @@ def main
   file = File.open("/etc/passwords_changed")
   changed = file.read.chomp
   if changed == "true"
-    puts "Passwords are set"
     exit 0
   else
     puts "The MySQL root and the concerto user passwords are still set to the defaults and should be changed for security. The current password is the password that came with this system image"
