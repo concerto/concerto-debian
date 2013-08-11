@@ -24,6 +24,7 @@ mkdir /usr/share/concerto/tmp
 chmod -R 777 /usr/share/concerto/tmp
 chown -R www-data:www-data /usr/share/concerto
 chmod 775 /usr/share/concerto/config/database.yml
+mkdir -p /usr/share/concerto/log
 chmod g+w /usr/share/concerto/log
 chmod g+w /usr/share/concerto/public
 #remove any old assets sitting around - Concerto will recompile
@@ -31,6 +32,8 @@ rm -rf /usr/share/concerto/public/assets
 
 cd /usr/share/concerto
 bundle install --path=vendor/bundle
+
+a2ensite concerto
 
 update-rc.d concerto defaults
 /etc/init.d/concerto start
