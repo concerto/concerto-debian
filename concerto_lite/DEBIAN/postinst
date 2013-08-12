@@ -13,6 +13,7 @@ then
 fi
 mkdir /usr/share/concerto/tmp
 chmod -R 777 /usr/share/concerto/tmp
+mkdir -p /usr/share/concerto/log 
 chown -R www-data:www-data /usr/share/concerto
 chmod 775 /usr/share/concerto/config/database.yml
 
