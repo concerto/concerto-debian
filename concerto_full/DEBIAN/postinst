@@ -22,9 +22,9 @@ then
 fi
 mkdir /usr/share/concerto/tmp
 chmod -R 777 /usr/share/concerto/tmp
+mkdir -p /usr/share/concerto/log 
 chown -R www-data:www-data /usr/share/concerto
 chmod 775 /usr/share/concerto/config/database.yml
-mkdir -p /usr/share/concerto/log
 chmod g+w /usr/share/concerto/log
 chmod g+w /usr/share/concerto/public
 #remove any old assets sitting around - Concerto will recompile
