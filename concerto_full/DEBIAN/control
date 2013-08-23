@@ -1,5 +1,5 @@
 Package: concerto-full
-Version: 0.6.0.hotelhummingbird
+Version: master
 Section: devel
 Priority: optional
 Architecture: all
