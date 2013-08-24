@@ -6,7 +6,7 @@ if [ "$1" = "purge" -a -e /usr/share/debconf/confmodule ]; then
 fi
 
 a2dissite concerto
-/etc/init.d/concerto stop
+invoke-rc.d concerto stop
 update-rc.d concerto remove
 apache2ctl restart
 
