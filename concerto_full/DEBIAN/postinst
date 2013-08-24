@@ -1,5 +1,5 @@
 #!/bin/sh
-#set -e
+set -e # lintian wants this script to exit when there are errors
 
 #Source debconf library.
 . /usr/share/debconf/confmodule
@@ -36,6 +36,6 @@ bundle install --path=vendor/bundle
 a2ensite concerto
 
 update-rc.d concerto defaults
-/etc/init.d/concerto start
+invoke-rc.d concerto start
 
 apache2ctl restart
