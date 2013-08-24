@@ -47,7 +47,7 @@ find ./ -type d | xargs chmod 755
 chmod 755 usr/local/bin/concerto-install-mysql
 echo "  setting files to 644..."
 find ./usr/share/concerto -type f -perm 664 | xargs chmod 644
-find ./usr/share/concerto -regextype posix-awk -regex "(.*\.png|.*\.jpg|.*\.ttf|.*\.pdf|.*\.eot|.*\.svg)" | xargs chmod 644
+find ./usr/share/concerto -regextype posix-awk -regex "(.*\.png|.*\.jpg|.*\.ttf|.*\.pdf|.*\.eot|.*\.svg|.*\.woff)" | xargs chmod 644
 chmod 755 ./usr/share/concerto/concerto
 echo "  setting files to 755..."
 find ./usr/share/concerto -type f -perm 775 | xargs chmod 755
