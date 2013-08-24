@@ -44,7 +44,6 @@ chmod 644 etc/apache2/sites-available/concerto
 
 echo "  setting directories to 755..."
 find ./ -type d | xargs chmod 755
-chmod 755 usr/local/bin/concerto-install-mysql
 echo "  setting files to 644..."
 find ./usr/share/concerto -type f -perm 664 | xargs chmod 644
 find ./usr/share/concerto -regextype posix-awk -regex "(.*\.png|.*\.jpg|.*\.ttf|.*\.pdf|.*\.eot|.*\.svg|.*\.woff)" | xargs chmod 644
@@ -94,7 +93,6 @@ cd ../..
 
 echo "  setting directories to 755..."
 find ./ -type d | xargs chmod 755
-chmod 755 usr/local/bin/concerto-install-mysql
 echo "  setting files to 644..."
 find ./usr/share/concerto -type f -perm 664 | xargs chmod 644
 find ./usr/share/concerto -regextype posix-awk -regex "(.*\.png|.*\.jpg|.*\.ttf|.*\.pdf|.*\.eot|.*\.svg|.*\.woff)" | xargs chmod 644
@@ -109,7 +107,7 @@ fakeroot dpkg-deb --build concerto_lite
 echo "  renaming package..."
 mv concerto_lite.deb concerto_lite_${version}_all.deb
 echo "  checking package..."
-lintian concerto_lite__${version}_all.deb > lite_lintian.log
+lintian concerto_lite_${version}_all.deb > lite_lintian.log
 
 # bundle packages for deployment
 echo "  bundling packages for deployment"
