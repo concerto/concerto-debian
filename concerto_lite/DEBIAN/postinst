@@ -1,5 +1,5 @@
 #!/bin/sh
-#set -e
+set -e
 
 #Source debconf library.
 . /usr/share/debconf/confmodule
@@ -21,4 +21,4 @@ cd /usr/share/concerto
 bundle install --without development --path=vendor/bundle
 
 update-rc.d concerto defaults
-/etc/init.d/concerto start
+invoke-rc.d concerto start
