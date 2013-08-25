@@ -1,0 +1,25 @@
+# these are the overrides for lintian for the concerto-lite package
+# you should review this file and verify that these warnings should  
+# still be supressed each time you overhaul the package contents.
+
+# these control files are empty by design
+concerto-lite binary: control-file-is-empty preinst
+concerto-lite binary: control-file-is-empty prerm
+concerto-lite binary: control-file-is-empty templates
+
+# this license file is part of the git repo
+concerto-lite binary: extra-license-file usr/share/concerto/LICENSE
+
+# we know this is from the git repo-- it's how we bundle these packages-- with submodules
+concerto-lite binary: package-contains-vcs-control-file usr/share/concerto/.gitignore
+
+# this is erroneously reported because our control file DOES have a dependency on ruby
+concerto-lite binary: ruby-script-but-no-ruby-dep usr/share/concerto/install.rb
+concerto-lite binary: ruby-script-but-no-ruby-dep usr/share/concerto/script/rails
+concerto-lite binary: ruby-script-but-no-ruby-dep usr/share/concerto/script/secure_rails
+
+# new pkgs released by debian require an ITP bug entered on their site for doc purposes
+concerto-lite binary: new-package-should-close-itp-bug
+
+# we'e got a rake file and it's actually ok
+concerto-lite binary: unusual-interpreter usr/share/concerto/Rakefile #!rake
