@@ -35,12 +35,13 @@ function build_package() {
   echo "  renaming package..."
   mv concerto_${1}.deb concerto_${1}_${version}_all.deb
 
-  echo "  checking package..."
-  lintian -i concerto_${1}_${version}_all.deb > ${1}_lintian.log
-  echo "  $(grep "E: " ${1}_lintian.log | wc -l) errors"
-  grep "E: " ${1}_lintian.log | sed 's/^/    /'
-  echo "  $(grep "W: " ${1}_lintian.log | wc -l) warnings"
-  grep "W: " ${1}_lintian.log | sed 's/^/    /'
+  echo "  checking package... (results logged to: ${1}_lintian.log)"
+  lintian -i --show-overrides concerto_${1}_${version}_all.deb > ${1}_lintian.log
+  echo "    $(grep "E: " ${1}_lintian.log | wc -l) errors"
+  grep "E: " ${1}_lintian.log | sed 's/^/      /'
+  echo "    $(grep "W: " ${1}_lintian.log | wc -l) warnings"
+  grep "W: " ${1}_lintian.log | sed 's/^/      /'
+  echo "    $(grep "O: " ${1}_lintian.log | wc -l) overrides"
 }
 
 function set_permissions() {
@@ -51,18 +52,20 @@ function set_permissions() {
   fi
 
   cd concerto_${1}
-  echo "  setting permissions for control files under $(pwd)..."
+  echo "  setting permissions for control files..."
   chmod 644 DEBIAN/*
   chmod 755 DEBIAN/config DEBIAN/postinst DEBIAN/postrm DEBIAN/preinst DEBIAN/prerm
   chmod 755 etc/init.d/concerto
   if [ -f etc/apache2/sites-available/concerto ]; then
     chmod 644 etc/apache2/sites-available/concerto
   fi
+  chmod 644 ./usr/share/lintian/overrides/concerto-${1}
   echo "  setting directories to 755..."
   find ./ -type d | xargs chmod 755
   echo "  setting files to 644..."
   find ./usr/share/concerto -type f -perm 664 | xargs chmod 644
   find ./usr/share/concerto -regextype posix-awk -regex "(.*\.png|.*\.jpg|.*\.ttf|.*\.pdf|.*\.eot|.*\.svg|.*\.woff)" | xargs chmod 644
+  chmod 644 ./usr/share/doc/concerto-${1}/*
   chmod 755 ./usr/share/concerto/concerto
   echo "  setting files to 755..."
   find ./usr/share/concerto -type f -perm 775 | xargs chmod 755
