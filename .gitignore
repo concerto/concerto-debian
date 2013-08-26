@@ -2,4 +2,6 @@ VERSION
 packages
 packages/db/*
 packages.tar.gz
+full_lintian.log
+lite_lintian.log
 
