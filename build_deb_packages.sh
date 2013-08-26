@@ -33,10 +33,10 @@ function build_package() {
   echo "  building package..."
   fakeroot dpkg-deb --build concerto_${1}
   echo "  renaming package..."
-  mv concerto_${1}.deb concerto_${1}_${version}_all.deb
+  mv debs/concerto_${1}.deb debs/concerto_${1}_${version}_all.deb
 
   echo "  checking package... (results logged to: ${1}_lintian.log)"
-  lintian -i --show-overrides concerto_${1}_${version}_all.deb > ${1}_lintian.log
+  lintian -i --show-overrides debs/concerto_${1}_${version}_all.deb > ${1}_lintian.log
   echo "    $(grep "E: " ${1}_lintian.log | wc -l) errors"
   grep "E: " ${1}_lintian.log | sed 's/^/      /'
   echo "    $(grep "W: " ${1}_lintian.log | wc -l) warnings"
@@ -119,9 +119,9 @@ mkdir -p packages/conf
 cp distributions packages/conf/
 cd packages
 echo "  preparing concerto_full package..."
-reprepro --component main --ask-passphrase -vb . includedeb raring ../concerto_full_${version}_all.deb
+reprepro --component main --ask-passphrase -vb . includedeb raring ../debs/concerto_full_${version}_all.deb
 echo "  preparing concerto_lite package..."
-reprepro --component main --ask-passphrase -vb . includedeb raring ../concerto_lite_${version}_all.deb
+reprepro --component main --ask-passphrase -vb . includedeb raring ../debs/concerto_lite_${version}_all.deb
 cd ..
 tar -czf packages.tar.gz packages
 
