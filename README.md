@@ -1,5 +1,5 @@
 #Concerto-Debian
-This Git repository contains everything needed to create the Concerto Debian packages **concerto-full** and **concerto-lite**.
+This Git repository contains everything needed to create the Concerto Debian packages.
 
 **concerto-lite**
 : A lightweight Concerto package that includes dependencies on ImageMagick, Ruby 1.9, and the MySQL client libraries.  It is intended for the user that wants  more control over their own web stack.  Additional, manual configuration is required to get the Concerto system running.
@@ -16,7 +16,9 @@ This Git repository contains everything needed to create the Concerto Debian pac
 ##Installing the Packages from the Concerto-Signage Repository
 1. Run the `scripts/add_repo.sh` script and then 
 2. Run `sudo apt-get install concerto-full` or specify concerto-lite instead of concerto-full, depending upon which package you want to install.
+
 OR  
+
 1. Add the Concerto-Signage Repository key:
 
 ```bash
