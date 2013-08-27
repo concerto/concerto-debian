@@ -32,6 +32,7 @@ fi
 mkdir -p /usr/share/concerto/tmp
 chmod -R 777 /usr/share/concerto/tmp
 mkdir -p /usr/share/concerto/log 
+touch /usr/share/concerto/log/production.log
 chown -R www-data:www-data /usr/share/concerto
 chmod 775 /usr/share/concerto/config/database.yml
 chmod g+w /usr/share/concerto/log
@@ -42,6 +43,8 @@ rm -rf /usr/share/concerto/public/assets
 cd /usr/share/concerto
 bundle install --path=vendor/bundle
 RAILS_ENV=production bundle exec rake assets:precompile
+# this happens implicity in the assets compile above
+# RAILS_ENV=production bundle exec rake db:migrate
 
 # migrate database before the service starts
 # this should work, but fails, even when run from shell prompt
