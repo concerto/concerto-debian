@@ -3,5 +3,15 @@
 #Source debconf library.
 . /usr/share/debconf/confmodule
 
+# source dbconfig-common shell library, and call the hook function
+if [ -f /usr/share/dbconfig-common/dpkg/config.mysql ]; then
+  dbc_dbuser="concerto"
+  dbc_dbname="concerto_production"
+  dbc_dbtypes="mysql"
+  . /usr/share/dbconfig-common/dpkg/config.mysql 
+  dbc_go concerto-full $@
+fi
+
+
 db_input critical concerto/passenger || true
 db_go
