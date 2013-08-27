@@ -42,12 +42,20 @@ rm -rf /usr/share/concerto/public/assets
 cd /usr/share/concerto
 bundle install --path=vendor/bundle
 
+# migrate database before the service starts
+# this should work, but fails, even when run from shell prompt
+# RAILS_ENV=production rake db:migrate
+
+a2ensite concerto
+invoke-rc.d apache2 restart
+
 update-rc.d concerto defaults
 invoke-rc.d concerto start
 
-# give the db a chance to get created
-echo "performing first time initialization..."
-sleep 5
-
-a2ensite concerto
-apache2ctl restart
+# according to the url below, if your package uses debconf (which ours does)
+# and it starts a daemon that doesn't close all inherited file descriptors
+# it will make debconf hang because the debconf frontend is waiting for the
+# daemon to close the fd's before continuing.  It recommends telling debconf that
+# we really are done, by calling db_stop
+# http://www.fifi.org/doc/debconf-doc/tutorial.html
+db_stop
