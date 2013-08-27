@@ -72,6 +72,16 @@ function set_permissions() {
   cd ..
 }
 
+function create_dbtemplate() {
+  # construct a template for the dbconfig-generate-include process
+  cat concerto_full/usr/share/concerto/config/database.yml.mysql >/tmp/$$.db1
+  sed '/^production:/,/^[ \t]*$/ { s/my_db_name/_DBC_DBNAME_/ }' /tmp/$$.db1 > /tmp/$$.db2
+  sed '/^production:/,/^[ \t]*$/ { s/my_user_name/_DBC_DBUSER_/ }' /tmp/$$.db2 > /tmp/$$.db3
+  sed '/^production:/,/^[ \t]*$/ { s/my_password/_DBC_DBPASS_/ }' /tmp/$$.db3 > concerto_full/usr/share/concerto/config/database.dbctemplate
+  chmod 644 concerto_full/usr/share/concerto/config/database.dbctemplate
+  rm /tmp/$$.db1 /tmp/$$.db2 /tmp/$$.db3
+}
+
 # ---------------------------------------------------
 # Fetch Concerto version tag from Github and read the flatfile for the number
 # ---------------------------------------------------
@@ -97,6 +107,7 @@ fi
 echo -e "\nBuilding concerto-full package...\n"
 # ---------------------------------------------------
 update_local_repo 'full'
+create_dbtemplate
 set_permissions 'full'
 build_package 'full'
 

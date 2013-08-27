@@ -4,6 +4,15 @@ set -e # lintian wants this script to exit when there are errors
 #Source debconf library.
 . /usr/share/debconf/confmodule
 
+# source dbconfig-common shell library, and call the hook function
+if [ -f /usr/share/dbconfig-common/dpkg/postinst.mysql ]; then
+  dbc_generate_include="template:/usr/share/concerto/config/database.yml"
+  dbc_generate_include_args="-o template_infile=/usr/share/concerto/config/database.dbctemplate"
+  dbc_generate_include_perms="644"
+  . /usr/share/dbconfig-common/dpkg/postinst.mysql
+  dbc_go concerto-full $@
+fi
+
 db_get concerto/passenger
 passenger="$RET"
 
@@ -33,9 +42,20 @@ rm -rf /usr/share/concerto/public/assets
 cd /usr/share/concerto
 bundle install --path=vendor/bundle
 
+# migrate database before the service starts
+# this should work, but fails, even when run from shell prompt
+# RAILS_ENV=production rake db:migrate
+
 a2ensite concerto
+invoke-rc.d apache2 restart
 
 update-rc.d concerto defaults
 invoke-rc.d concerto start
 
-apache2ctl restart
+# according to the url below, if your package uses debconf (which ours does)
+# and it starts a daemon that doesn't close all inherited file descriptors
+# it will make debconf hang because the debconf frontend is waiting for the
+# daemon to close the fd's before continuing.  It recommends telling debconf that
+# we really are done, by calling db_stop
+# http://www.fifi.org/doc/debconf-doc/tutorial.html
+db_stop
