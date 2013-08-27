@@ -8,7 +8,7 @@ This Git repository contains everything needed to create the Concerto Debian pac
 : The full Concerto package closely replicates the setup of the server virtual image. It includes dependencies on ImageMagick, Ruby 1.9, the MySQL client libraries, Apache2, and all the required libraries for Passenger. Once this package is installed, the Concerto system should be up and running.
 
 ##Building the Packages and Updating the Concerto-Signage Repository
-* Make sure the following tools are installed: gpg, lintian, and reprepro.
+* Make sure the following tools are installed: gpg, lintian, dbconfig-common, and reprepro.
 * Make sure the GPG keychain (available from a committer) is installed in your home directory.  You'll also need the passphrase for the key.
 * Run the `./build_deb_packages.sh` script.
 * Upload the `packages.tar.gz` file, that is produced, to the download server and unpack it.
