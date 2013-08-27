@@ -19,13 +19,8 @@ This Git repository contains everything needed to create the Concerto Debian pac
 
 OR  
 
-1. Add the Concerto-Signage Repository key:
-
-```bash
-wget -O - http://dl.concerto-signage.org/concerto_deb_public.key | sudo apt-key add -
-```
+1. Add the Concerto-Signage Repository key: `wget -O - http://dl.concerto-signage.org/concerto_deb_public.key | sudo apt-key add -`
 2. Add this line to /etc/apt.sources.list (or as a file in /etc/apt/sources.list.d/):
-
 ```
     deb http://dl.concerto-signage.org/packages/ raring main
 ```
