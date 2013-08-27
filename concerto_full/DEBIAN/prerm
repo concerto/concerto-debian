@@ -1,0 +1,10 @@
+#!/bin/sh -e
+
+#Source debconf library.
+. /usr/share/debconf/confmodule
+
+# source dbconfig-common shell library, and call the hook function
+if [ -f /usr/share/dbconfig-common/dpkg/prerm.mysql ]; then
+  . /usr/share/dbconfig-common/dpkg/prerm.mysql 
+  dbc_go concerto-full $@
+fi
