@@ -1,13 +1,20 @@
 if [ "$1" = "purge" -a -e /usr/share/debconf/confmodule ]; then
     # Source debconf library.
     . /usr/share/debconf/confmodule
+
+    # source dbconfig-common shell library, and call the hook function
+    if [ -f /usr/share/dbconfig-common/dpkg/postrm.mysql ]; then
+      . /usr/share/dbconfig-common/dpkg/postrm.mysql 
+      dbc_go concerto-full $@
+    fi
+
     # Remove my changes to the db.
     db_purge
 fi
 
 a2dissite concerto
 invoke-rc.d concerto stop
-update-rc.d concerto remove
+update-rc.d -f concerto remove
 apache2ctl restart
 
 

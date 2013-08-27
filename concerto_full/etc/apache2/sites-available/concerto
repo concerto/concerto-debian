@@ -11,5 +11,8 @@ PassengerDefaultRuby /usr/bin/ruby1.9.1
     AllowOverride all
     Options -MultiViews
   </Directory>
+
+  PassengerMinInstances 3
+  PassengerPreStart http://concerto/
 </VirtualHost>
 

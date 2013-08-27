@@ -73,7 +73,7 @@ do_stop()
     
       # STOP CONCURRENT: 1
         # Stop: concerto.clock.1
-        kill `cat $PIDDIR/clock.1.pid`
+        kill `cat $PIDDIR/clock.1.pid` 2>/dev/null
         rm $PIDDIR/clock.1.pid
     
   
@@ -81,7 +81,7 @@ do_stop()
     
       # STOP CONCURRENT: 1
         # Stop: concerto.worker.1
-        kill `cat $PIDDIR/worker.1.pid`
+        kill `cat $PIDDIR/worker.1.pid` 2>/dev/null
         rm $PIDDIR/worker.1.pid
     
   
