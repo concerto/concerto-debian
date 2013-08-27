@@ -41,6 +41,7 @@ rm -rf /usr/share/concerto/public/assets
 
 cd /usr/share/concerto
 bundle install --path=vendor/bundle
+RAILS_ENV=production bundle exec rake assets:precompile
 
 # migrate database before the service starts
 # this should work, but fails, even when run from shell prompt
