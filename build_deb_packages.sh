@@ -31,12 +31,9 @@ function build_package() {
 
   # build package 
   echo "  building package..."
-  fakeroot dpkg-deb --build concerto_${1}
-  echo "  renaming package..."
-  mv debs/concerto_${1}.deb debs/concerto_${1}_${version}_all.deb
-
+  fakeroot dpkg-deb --build concerto_${1} debs
   echo "  checking package... (results logged to: ${1}_lintian.log)"
-  lintian -i --show-overrides debs/concerto_${1}_${version}_all.deb > ${1}_lintian.log
+  lintian -i --show-overrides debs/concerto-${1}_${version}_all.deb > ${1}_lintian.log
   echo "    $(grep "E: " ${1}_lintian.log | wc -l) errors"
   grep "E: " ${1}_lintian.log | sed 's/^/      /'
   echo "    $(grep "W: " ${1}_lintian.log | wc -l) warnings"
@@ -69,6 +66,9 @@ function set_permissions() {
   chmod 755 ./usr/share/concerto/concerto
   echo "  setting files to 755..."
   find ./usr/share/concerto -type f -perm 775 | xargs chmod 755
+  if [ -f usr/sbin/prepvm_for_capistrano ]; then
+    chmod 755 usr/sbin/prepvm_for_capistrano
+  fi
   cd ..
 }
 
@@ -130,9 +130,9 @@ mkdir -p packages/conf
 cp distributions packages/conf/
 cd packages
 echo "  preparing concerto_full package..."
-reprepro --component main --ask-passphrase -vb . includedeb raring ../debs/concerto_full_${version}_all.deb
+reprepro --component main --ask-passphrase -vb . includedeb raring ../debs/concerto-full_${version}_all.deb
 echo "  preparing concerto_lite package..."
-reprepro --component main --ask-passphrase -vb . includedeb raring ../debs/concerto_lite_${version}_all.deb
+reprepro --component main --ask-passphrase -vb . includedeb raring ../debs/concerto-lite_${version}_all.deb
 cd ..
 tar -czf packages.tar.gz packages
 
