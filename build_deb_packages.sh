@@ -66,9 +66,6 @@ function set_permissions() {
   chmod 755 ./usr/share/concerto/concerto
   echo "  setting files to 755..."
   find ./usr/share/concerto -type f -perm 775 | xargs chmod 755
-  if [ -f usr/sbin/prepvm_for_capistrano ]; then
-    chmod 755 usr/sbin/prepvm_for_capistrano
-  fi
   cd ..
 }
 
