@@ -22,7 +22,7 @@ if [ "$passenger"  = "true" ]; then
   rake apache2
 fi
 
-gem1.9.1 install --no-ri --no-rdoc rake bundler highline
+gem1.9.1 install --no-ri --no-rdoc rake bundler
 
 #We'll leave database.yml alone if it exists already
 if [ ! -f /usr/share/concerto/config/database.yml ];
