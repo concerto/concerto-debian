@@ -7,7 +7,8 @@ if changed == "true"
   exit 0
 else
   #Change concerto user password
-  system("passwd")
-  #Mark passwords as properly changed
-  system("echo true > /etc/passwords_changed")
+  if system("passwd")
+    #Mark passwords as properly changed
+    system("echo true > /etc/passwords_changed")
+  end
 end
