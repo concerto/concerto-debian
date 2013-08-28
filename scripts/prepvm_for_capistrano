@@ -118,6 +118,11 @@ if [ "${remove_pkg}" == "1" ]; then
   apt-get remove concerto-full -qq -y
 fi
 
+# re-register the service
+if [ -f /etc/init.d/concerto ]; then
+  update-rc.d concerto defaults
+fi
+
 # restart apache since we changed the site configuration
 echo "restarting web server"
 if [ ! -f /etc/apache2/sites-enabled/concerto ]; then
