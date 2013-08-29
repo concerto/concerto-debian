@@ -79,6 +79,19 @@ function create_dbtemplate() {
   rm /tmp/$$.db1 /tmp/$$.db2 /tmp/$$.db3
 }
 
+function copy_service_script() {
+  # $1 is full or lite
+  if [ "${1}" != "full" ] && [ "${1}" != "lite" ]; then
+    echo "don't know what to set permissions for -- ${1} ??"
+    exit 1
+  fi
+
+  cd concerto_${1}
+  echo "  copying service script from repo..."
+  cp usr/share/concerto/concerto-init.d etc/init.d/concerto
+  cd ..
+}
+
 # ---------------------------------------------------
 # Fetch Concerto version tag from Github and read the flatfile for the number
 # ---------------------------------------------------
@@ -105,6 +118,7 @@ echo -e "\nBuilding concerto-full package...\n"
 # ---------------------------------------------------
 update_local_repo 'full'
 create_dbtemplate
+copy_service_script 'full'
 set_permissions 'full'
 build_package 'full'
 
@@ -113,6 +127,7 @@ build_package 'full'
 echo -e "\nBuilding concerto-lite package...\n"
 # ---------------------------------------------------
 update_local_repo 'lite'
+copy_service_script 'lite'
 set_permissions 'lite'
 build_package 'lite'
 
