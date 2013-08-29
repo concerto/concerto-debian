@@ -3,7 +3,7 @@ Version: 0.7.0.indiaibex
 Section: devel
 Priority: optional
 Architecture: all
-Depends: build-essential, debconf, ruby1.9.1-full, libruby1.9.1, apache2-mpm-worker, imagemagick, librmagick-ruby, libmagickcore-dev, libmagickwand-dev, libcurl4-openssl-dev, libssl-dev, zlib1g-dev, apache2-prefork-dev, libapr1-dev, libaprutil1-dev, libsqlite3-dev, mysql-server, mysql-client, libmysql-ruby1.9.1, dbconfig-common
+Depends: build-essential, debconf, ruby1.9.1-full, libruby1.9.1, imagemagick, librmagick-ruby, libmagickcore-dev, libmagickwand-dev, libcurl4-openssl-dev, libssl-dev, zlib1g-dev, apache2-prefork-dev, libapr1-dev, libaprutil1-dev, libsqlite3-dev, mysql-server, mysql-client, libmysql-ruby1.9.1, dbconfig-common, apache2-mpm-worker | apache2-mpm-prefork
 Maintainer: Concerto Team <team@concerto-signage.org>
 Description: Digital Signage Web Application using Ruby on Rails
  Web application for displaying graphical, textual, video, and 
