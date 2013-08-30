@@ -5,3 +5,6 @@ packages.tar.gz
 full_lintian.log
 lite_lintian.log
 
+# ignore the service control script which is copied from the concerto repo and placed into this one during the build
+concerto_full/etc/init.d/concerto
+concerto_lite/etc/init.d/concerto
