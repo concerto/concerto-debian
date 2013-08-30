@@ -1,8 +1,12 @@
 #!/bin/bash
-# prepvm_for_capistrano.sh
+# prepvm_for_capistrano
 # Prepares the concerto virtual machine image for capistrano deploys.
 # Download this script to the concerto home directory, chmod +x it and
 # run as sudo (for directory creation and permission and config changes).
+#
+# if it complains about not having an /etc/init.d/concerto service script
+# the you probably have an older vm image and can safely skip that check
+# by running "sudo ./prepvm_for_capistrano skip"
 
 # prompt for confirmation
 clear
@@ -38,8 +42,8 @@ fi
 # look for key files to see if the environment is in the expected state
 remove_pkg=1;
 echo -e "\nChecking to see if environment is in the expected state..."
-if [ ! -f /etc/init.d/concerto ]; then
-  echo "no service control file - the /etc/init.d/concerto file is missing"
+if [ ! -f /etc/init.d/concerto -a "$1" != "skip" ]; then
+  echo "no service control script - the /etc/init.d/concerto file is missing"
   exit 1
 elif [ ! -f /usr/share/concerto/config/database.yml ]; then
   echo "database configuration file is missing - cannot copy configuration"
