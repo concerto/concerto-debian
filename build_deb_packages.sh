@@ -131,10 +131,11 @@ else
 fi
 
 # update the control_version variable which is used for buidling the package
-if [ "${version}" == "master" ]; then
-  control_version="0.0.0.${version}"
-else
+if [[ "${version}" =~ ^([0-9]\.){3}.+ ]]; then
+  # this is a version tag
   control_version="${version}"
+else
+  control_version="0.0.0.${version}"
 fi
 
 # ---------------------------------------------------
