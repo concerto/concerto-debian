@@ -13,7 +13,9 @@ function update_local_repo() {
   cd usr/share/concerto
   git reset --hard -q
   git checkout master -q
-  git pull origin master -q
+  # this wasnt updating the tag list for some reason, but git pull does
+  # git pull origin master -q
+  git pull
   git checkout $version -q
   localversion="$(git describe --always --tags)"
   cd ../../..
@@ -60,7 +62,7 @@ function set_permissions() {
   #echo "  setting directories to 755..."
   find ./ -type d | xargs chmod 755
   #echo "  setting files to 644..."
-  find ./usr/share/concerto -type f -perm 664 | xargs chmod 644
+  find ./usr/share/concerto -type f -perm 664 -exec chmod 644 '{}' \;
   find ./usr/share/concerto -regextype posix-awk -regex "(.*\.png|.*\.jpg|.*\.ttf|.*\.pdf|.*\.eot|.*\.svg|.*\.woff)" | xargs chmod 644
   chmod 644 ./usr/share/doc/concerto-${1}/*
   #echo "  setting files to 755..."
