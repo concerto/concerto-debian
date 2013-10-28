@@ -52,7 +52,7 @@ chmod 666 /usr/share/concerto/log/production.log
 # this should work, but fails, even when run from shell prompt
 # RAILS_ENV=production rake db:migrate
 
-a2ensite concerto
+a2ensite concerto.conf
 invoke-rc.d apache2 restart
 
 update-rc.d concerto defaults
