@@ -53,8 +53,8 @@ function set_permissions() {
   chmod 644 DEBIAN/*
   chmod 755 DEBIAN/config DEBIAN/postinst DEBIAN/postrm DEBIAN/preinst DEBIAN/prerm
   chmod 755 etc/init.d/concerto
-  if [ -f /etc/apache2/sites-available/concerto.conf ]; then
-    chmod 644 /etc/apache2/sites-available/concerto.conf
+  if [ -f etc/apache2/sites-available/concerto.conf ]; then
+    chmod 644 etc/apache2/sites-available/concerto.conf
   fi
   chmod 644 ./usr/share/lintian/overrides/concerto-${1}
   #echo "  setting directories to 755..."
