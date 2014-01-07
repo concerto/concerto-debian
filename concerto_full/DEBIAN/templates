@@ -1,4 +1,0 @@
-Template: concerto/passenger
-Type: boolean
-Description: Would you like to install it?
- Passenger is highly recommended for serving Concerto from Apache.

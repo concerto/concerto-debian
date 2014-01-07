@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby1.9.1
+#!/usr/bin/env ruby
 #This script is used on the Concerto Server VM image to make sure users change the default passwords
 
 file = File.open("/etc/passwords_changed")
@@ -10,5 +10,7 @@ else
   if system("passwd")
     #Mark passwords as properly changed
     system("echo true > /etc/passwords_changed")
+    #change mysql root password
+    system("sudo dpkg-reconfigure mysql-server-5.5")
   end
 end

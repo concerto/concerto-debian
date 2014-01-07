@@ -13,16 +13,7 @@ if [ -f /usr/share/dbconfig-common/dpkg/postinst.mysql ]; then
   dbc_go concerto-full $@
 fi
 
-db_get concerto/passenger
-passenger="$RET"
-
-if [ "$passenger"  = "true" ]; then
-  gem1.9.1 install --no-ri --no-rdoc passenger -v 4.0.5
-  cd /var/lib/gems/1.9.1/gems/passenger-4.0.5
-  rake apache2
-fi
-
-gem1.9.1 install --no-ri --no-rdoc rake bundler
+gem install --no-ri --no-rdoc rake bundler
 
 #We'll leave database.yml alone if it exists already
 if [ ! -f /usr/share/concerto/config/database.yml ];
