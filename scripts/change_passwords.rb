@@ -7,10 +7,8 @@ if changed == "true"
   exit 0
 else
   #Change concerto user password
-  if system("passwd")
+  if system("passwd") && system("sudo dpkg-reconfigure mysql-server-5.5")
     #Mark passwords as properly changed
     system("echo true > /etc/passwords_changed")
-    #change mysql root password
-    system("sudo dpkg-reconfigure mysql-server-5.5")
   end
 end
