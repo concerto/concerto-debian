@@ -3,7 +3,7 @@ Version: 0.8.5.julietjaguar
 Section: devel
 Priority: optional
 Architecture: all
-Depends: libreoffice, build-essential, debconf, apt-transport-https, libxslt-dev, libapache2-mod-passenger, ruby1.9.1-full, libruby1.9.1, imagemagick, librmagick-ruby, libmagickcore-dev, libmagickwand-dev, libcurl4-openssl-dev, libssl-dev, zlib1g-dev, libsqlite3-dev, mysql-server, mysql-client, libmysql-ruby1.9.1, libmysqlclient-dev, dbconfig-common, apache2-mpm-worker | apache2-mpm-prefork, graphicsmagick, poppler-utils, poppler-data
+Depends: build-essential, debconf, apt-transport-https, libxslt-dev, libapache2-mod-passenger, ruby1.9.1-full, libruby1.9.1, imagemagick, librmagick-ruby, libmagickcore-dev, libmagickwand-dev, libcurl4-openssl-dev, libssl-dev, zlib1g-dev, libsqlite3-dev, mysql-server, mysql-client, libmysql-ruby1.9.1, libmysqlclient-dev, dbconfig-common, apache2-mpm-worker | apache2-mpm-prefork, libreoffice, poppler-utils, poppler-data, tesseract-ocr, pdftk
 Maintainer: Concerto Team <team@concerto-signage.org>
 Description: Digital Signage Web Application using Ruby on Rails
  Web application for displaying graphical, textual, video, and 
