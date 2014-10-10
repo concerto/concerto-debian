@@ -137,7 +137,7 @@ if [[ "${version}" =~ ^([0-9]\.){3}.+ ]]; then
   # this is a version tag
   control_version="${version}"
 else
-  control_version="0.0.0.${version}"
+  control_version="${version}"
 fi
 
 # ---------------------------------------------------
