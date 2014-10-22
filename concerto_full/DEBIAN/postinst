@@ -34,6 +34,7 @@ rm -rf /usr/share/concerto/public/assets
 cd /usr/share/concerto
 bundle install --path=vendor/bundle
 RAILS_ENV=production bundle exec rake assets:precompile
+bundle clean -V
 
 chmod -R 777 /usr/share/concerto/tmp
 chown -R www-data:www-data /usr/share/concerto
