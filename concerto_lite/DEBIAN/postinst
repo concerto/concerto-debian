@@ -20,6 +20,7 @@ chmod 775 /usr/share/concerto/config/database.yml
 cd /usr/share/concerto
 bundle install --without development --path=vendor/bundle
 RAILS_ENV=production bundle exec rake assets:precompile
+bundle clean -V
 
 update-rc.d concerto defaults
 invoke-rc.d concerto start
