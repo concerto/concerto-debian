@@ -1,0 +1,12 @@
+checkout:
+  post:
+    - git submodule sync
+    - git submodule update --init
+
+dependencies:
+  pre:
+    - apt-get install gpg, lintian, dbcommon-common, reprepro
+
+test:
+  post:
+    - ./build_deb_packages.sh
