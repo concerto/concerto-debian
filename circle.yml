@@ -3,10 +3,22 @@ checkout:
     - git submodule sync
     - git submodule update --init
 
-dependencies:
+machine:
   pre:
-    - apt-get install gpg, lintian, dbcommon-common, reprepro
+    # Build dependencies
+    - sudo apt-get update; sudo apt-get install gnupg lintian dbconfig-common reprepro
+    # Install-time dependencies for concerto-lite
+    - sudo apt-get install ruby2.0 libcurl4-openssl-dev ruby-mysql
 
 test:
+  pre:
+    - sh build-scripts/circleci_prep_environment.sh
+    - ./build_deb_packages.sh -v 2-master
+  override:
+    - sudo dpkg -i debs/concerto-lite_2-master_all.deb
+    - sudo dpkg --purge concerto-lite
+    - sudo dpkg -i debs/concerto-full_2-master_all.deb
+    - sudo dpkg --purge concerto-full
   post:
-    - ./build_deb_packages.sh
+    - sh build-scripts/circleci_move_artifacts.sh
+
