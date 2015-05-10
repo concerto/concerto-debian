@@ -9,7 +9,7 @@ gem1.9.1 install --no-ri --no-rdoc rake bundler
 #We'll leave database.yml alone if it exists already
 if [ ! -f /usr/share/concerto/config/database.yml ];
 then
-  cp /usr/share/concerto/config/database.yml.sample /usr/share/concerto/config/database.yml
+  cp /usr/share/concerto/config/database.yml.sqlite /usr/share/concerto/config/database.yml
 fi
 mkdir -p /usr/share/concerto/tmp
 chmod -R 777 /usr/share/concerto/tmp
