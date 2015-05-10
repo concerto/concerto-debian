@@ -22,7 +22,7 @@ OR
 1. Add the Concerto-Signage Repository key: `wget -O - http://dl.concerto-signage.org/concerto_deb_public.key | sudo apt-key add -`
 2. Add this line to /etc/apt.sources.list (or as a file in /etc/apt/sources.list.d/):
 ```
-    deb http://dl.concerto-signage.org/packages/ raring main
+    deb http://dl.concerto-signage.org/packages/ jessie main
 ```
 
 After installation, the Concerto Apache configuration must be enabled (`sudo a2ensite concerto`) and Apache must be reloaded (`sudo service apache2 reload`). The default Apache configuration may also need to be disabled (`sudo a2dissite 000-default`).
