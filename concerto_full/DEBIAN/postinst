@@ -32,9 +32,9 @@ chmod g+w /usr/share/concerto/public
 rm -rf /usr/share/concerto/public/assets
 
 cd /usr/share/concerto
-sudo -u www-data bundle install --path=vendor/bundle
-sudo -u www-data RAILS_ENV=production bundle exec rake assets:precompile
-sudo -u www-data bundle clean -V
+su -s /bin/bash -c 'bundle install --without development --path=vendor/bundle' www-data
+su -s /bin/bash -c 'RAILS_ENV=production bundle exec rake assets:precompile' www-data
+su -s /bin/bash -c 'bundle clean -V' www-data
 
 chmod -R 777 /usr/share/concerto/tmp
 chown -R www-data:www-data /usr/share/concerto
