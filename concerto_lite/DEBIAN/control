@@ -1,9 +1,9 @@
 Package: concerto-lite
-Version: 0.9.2.kilobalrog
+Version: 2.3.0
 Section: devel
 Priority: optional
 Architecture: all
-Depends: ruby-dev, build-essential, debconf, libxslt-dev, ruby1.9.1-full | ruby2.0 |ruby2.1, libruby1.9.1 | libruby2.0 | libruby2.1, imagemagick, ruby-rmagick, libmagickcore-dev, libmagickwand-dev, libcurl4-openssl-dev, libssl-dev, zlib1g-dev, libsqlite3-dev, mysql-server, mysql-client, ruby-mysql, libmysqlclient-dev, dbconfig-common
+Depends: ruby-dev, build-essential, debconf, libxslt-dev, ruby2.0 |ruby2.1, libruby2.0 | libruby2.1, imagemagick, ruby-rmagick, libmagickcore-dev, libmagickwand-dev, libcurl4-openssl-dev, libssl-dev, zlib1g-dev, libsqlite3-dev, mysql-server, mysql-client, ruby-mysql, libmysqlclient-dev, dbconfig-common
 Suggests: libreoffice, poppler-utils, poppler-data, tesseract-ocr, pdftk
 Maintainer: Concerto Team <team@concerto-signage.org>
 Description: Digital Signage Web Application using Ruby on Rails
