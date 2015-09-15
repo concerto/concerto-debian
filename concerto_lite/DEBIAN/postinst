@@ -23,4 +23,7 @@ su -s /bin/bash -c 'RAILS_ENV=production bundle exec rake assets:precompile' www
 su -s /bin/bash -c 'bundle clean -V' www-data
 
 update-rc.d concerto defaults
+
+# call db_stop so that the daemon doesn't hang
+db_stop
 invoke-rc.d concerto start
