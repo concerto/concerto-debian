@@ -6,4 +6,10 @@ if [ "$1" = "purge" -a -e /usr/share/debconf/confmodule ]; then
 fi
 
 invoke-rc.d concerto stop
+
+# remove the service file if it exists so no error is returned by the following command
+if [ -f /etc/init.d/concerto ]; then
+	rm /etc/init.d/concerto
+fi
+
 update-rc.d concerto remove
