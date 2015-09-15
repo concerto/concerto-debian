@@ -17,6 +17,7 @@ test:
   override:
     - sudo dpkg -i debs/concerto-lite_2-master_all.deb
     - sudo dpkg --purge concerto-lite
+    - sudo apt-get install libapache2-mod-passenger
     - sudo dpkg -i debs/concerto-full_2-master_all.deb
     - sudo dpkg --purge concerto-full
   post:
