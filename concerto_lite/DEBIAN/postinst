@@ -18,7 +18,7 @@ chown -R www-data:www-data /usr/share/concerto
 chmod 775 /usr/share/concerto/config/database.yml
 
 cd /usr/share/concerto
-su -s /bin/bash -c 'bundle install --without development --path=vendor/bundle' www-data
+su -s /bin/bash -c 'bundle install --without postgres development --path=vendor/bundle' www-data
 su -s /bin/bash -c 'RAILS_ENV=production bundle exec rake assets:precompile' www-data
 su -s /bin/bash -c 'bundle clean -V' www-data
 

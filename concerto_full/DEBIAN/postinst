@@ -32,7 +32,7 @@ chmod g+w /usr/share/concerto/public
 rm -rf /usr/share/concerto/public/assets
 
 cd /usr/share/concerto
-su -s /bin/bash -c 'bundle install --without development --path=vendor/bundle' www-data
+su -s /bin/bash -c 'bundle install --without postgres development --path=vendor/bundle' www-data
 su -s /bin/bash -c 'RAILS_ENV=production bundle exec rake assets:precompile' www-data
 su -s /bin/bash -c 'bundle clean -V' www-data
 
