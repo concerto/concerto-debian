@@ -17,7 +17,7 @@ test:
   override:
     - sudo dpkg -i debs/concerto-lite_2-master_all.deb
     - sudo dpkg --purge concerto-lite
-    - sudo apt-get install libapache2-mod-passenger rubygems ruby-dev build-essential debconf libxslt1-dev imagemagick libmagickcore5-dev libmagickwand5 libssl-dev zlib1g-dev libsqlite3-dev mysql-server mysql-client libmysqlclient-dev apache2-mpm-worker 
+    - sudo apt-get install libapache2-mod-passenger rubygems ruby-dev build-essential debconf libxslt1-dev imagemagick libmagickcore-dev libmagickwand-dev libmagickcore5 libmagickcore5-extra libmagickwand5 libssl-dev zlib1g-dev libsqlite3-dev mysql-server mysql-client libmysqlclient-dev apache2-mpm-worker 
     - sudo dpkg -i debs/concerto-full_2-master_all.deb
     - sudo dpkg --purge concerto-full
   post:
