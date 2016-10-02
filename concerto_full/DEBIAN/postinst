@@ -13,8 +13,6 @@ if [ -f /usr/share/dbconfig-common/dpkg/postinst.mysql ]; then
   dbc_go concerto-full $@
 fi
 
-gem install --no-ri --no-rdoc rake bundler
-
 #We'll leave database.yml alone if it exists already
 if [ ! -f /usr/share/concerto/config/database.yml ];
 then
@@ -31,6 +29,7 @@ chmod g+w /usr/share/concerto/public
 #remove any old assets sitting around - Concerto will recompile
 rm -rf /usr/share/concerto/public/assets
 
+gem install bundler --no-ri --no-rdoc
 cd /usr/share/concerto
 su -s /bin/bash -c 'bundle install --without postgres development --path=vendor/bundle' www-data
 su -s /bin/bash -c 'RAILS_ENV=production bundle exec rake assets:precompile' www-data

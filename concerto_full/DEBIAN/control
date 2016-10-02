@@ -1,9 +1,9 @@
 Package: concerto-full
-Version: 2.3.0
+Version: 2.3.3
 Section: devel
 Priority: optional
 Architecture: all
-Depends: ruby-dev, build-essential, debconf, apt-transport-https, libxslt-dev, libapache2-mod-passenger, ruby2.0 | ruby2.1, libruby2.0 | libruby2.1, imagemagick, ruby-rmagick, libmagickcore-dev, libmagickwand-dev, libcurl4-openssl-dev, libssl-dev, zlib1g-dev, libsqlite3-dev, mysql-server, mysql-client, ruby-mysql, libmysqlclient-dev, dbconfig-common, apache2-mpm-worker | apache2-mpm-prefork
+Depends: build-essential, debconf, apt-transport-https, libapache2-mod-passenger, ruby, ruby-dev, libruby, imagemagick, ruby-rmagick, libmagickwand-dev, libssl-dev, zlib1g-dev, libsqlite3-dev, mysql-server, mysql-client, ruby-mysql, libmysqlclient-dev, dbconfig-common, apache2, libxslt-dev |  libxslt1-dev
 Suggests: libreoffice, poppler-utils, poppler-data, tesseract-ocr, pdftk
 Maintainer: Concerto Team <team@concerto-signage.org>
 Description: Digital Signage Web Application using Ruby on Rails
