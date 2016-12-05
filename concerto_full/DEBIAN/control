@@ -3,7 +3,7 @@ Version: 2.3.3
 Section: devel
 Priority: optional
 Architecture: all
-Depends: build-essential, debconf, apt-transport-https, libapache2-mod-passenger, ruby, ruby-dev, libruby, imagemagick, ruby-rmagick, libmagickwand-dev, libssl-dev, zlib1g-dev, libsqlite3-dev, mysql-server, mysql-client, ruby-mysql, libmysqlclient-dev, dbconfig-common, apache2, libxslt-dev |  libxslt1-dev
+Depends: build-essential, debconf, apt-transport-https, libapache2-mod-passenger, ruby (>= 2.1), ruby-dev, libruby, imagemagick, ruby-rmagick, libmagickwand-dev, libssl-dev, zlib1g-dev, libsqlite3-dev, mysql-server, mysql-client, ruby-mysql, libmysqlclient-dev, dbconfig-common, apache2, libxslt-dev |  libxslt1-dev
 Suggests: libreoffice, poppler-utils, poppler-data, tesseract-ocr, pdftk
 Maintainer: Concerto Team <team@concerto-signage.org>
 Description: Digital Signage Web Application using Ruby on Rails
