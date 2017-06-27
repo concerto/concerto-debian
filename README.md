@@ -41,7 +41,7 @@ The concerto-full package will place a concerto site configuration file in /etc/
 * build-essential
 * imagemagick
 * libruby1.9.1
-* ruby1.9.1-full
+* ruby2.1-full
 
 ### Passenger Dependencies
 * apache2-mpm-worker
