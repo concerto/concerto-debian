@@ -8,8 +8,10 @@ machine:
     # Build dependencies
     - sudo apt-get update; sudo apt-get install gnupg lintian dbconfig-common reprepro
     # Install-time dependencies for concerto-lite
-    - sudo apt-get install ruby2.1 libcurl4-openssl-dev ruby-mysql
-
+    - sudo apt-get install libcurl4-openssl-dev ruby-mysql
+  machine:
+    ruby: 2.1
+    
 test:
   pre:
     - sh build-scripts/circleci_prep_environment.sh
