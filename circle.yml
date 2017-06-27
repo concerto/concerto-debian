@@ -9,9 +9,8 @@ machine:
     - sudo apt-get update; sudo apt-get install gnupg lintian dbconfig-common reprepro
     # Install-time dependencies for concerto-lite
     - sudo apt-get install libcurl4-openssl-dev ruby-mysql
-  machine:
-    ruby:
-      version: 2.1
+  ruby:
+    version: 2.1
 
 test:
   pre:
