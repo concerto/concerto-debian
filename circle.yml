@@ -10,8 +10,9 @@ machine:
     # Install-time dependencies for concerto-lite
     - sudo apt-get install libcurl4-openssl-dev ruby-mysql
   machine:
-    ruby: 2.1
-    
+    ruby:
+      version: 2.1
+
 test:
   pre:
     - sh build-scripts/circleci_prep_environment.sh
