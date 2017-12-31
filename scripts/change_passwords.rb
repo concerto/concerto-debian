@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 #This script is used on the Concerto Server VM image to make sure users change the default passwords
 
-file = File.open("/etc/passwords_changed")
+file = File.open("/etc/passwords_changed", "a+")
 changed = file.read.chomp
 if changed == "true"
   exit 0
