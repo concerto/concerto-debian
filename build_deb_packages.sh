@@ -92,9 +92,9 @@ mkdir -p packages/conf
 cp distributions packages/conf/
 cd packages
 echo "  preparing concerto_full package..."
-reprepro --component main --ask-passphrase -vb . includedeb jessie ../debs/concerto-full_${control_version}_all.deb
+reprepro --component main --ask-passphrase -vb . includedeb stretch ../debs/concerto-full_${control_version}_all.deb
 echo "  preparing concerto_lite package..."
-reprepro --component main --ask-passphrase -vb . includedeb jessie ../debs/concerto-lite_${control_version}_all.deb
+reprepro --component main --ask-passphrase -vb . includedeb stretch ../debs/concerto-lite_${control_version}_all.deb
 cd ..
 tar -czf packages.tar.gz packages
 

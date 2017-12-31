@@ -1,8 +1,8 @@
 Origin: dl.concerto-signage.org
 Label: apt repository
-Codename: jessie
+Codename: stretch
 Architectures: i386 amd64 source
 Components: main
 Description: Concerto debian package repo
 SignWith: yes
-Pull: jessie
+Pull: stretch
