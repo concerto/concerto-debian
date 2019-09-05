@@ -2,10 +2,10 @@
 This Git repository contains everything needed to create the Concerto Debian packages.
 
 **concerto-lite**
-: A lightweight Concerto package that includes dependencies on ImageMagick, Ruby 1.9, and the MySQL client libraries.  It is intended for the user that wants  more control over their own web stack.  Additional, manual configuration is required to get the Concerto system running.
+: A lightweight Concerto package that includes dependencies on ImageMagick, Ruby > 2.1, and the MySQL client libraries.  It is intended for the user that wants  more control over their own web stack.  Additional, manual configuration is required to get the Concerto system running.
 
 **concerto-full**
-: The full Concerto package closely replicates the setup of the server virtual image. It includes dependencies on ImageMagick, Ruby 1.9, the MySQL client libraries, Apache2, and all the required libraries for Passenger. Once this package is installed, the Concerto system should be up and running.
+: The full Concerto package closely replicates the setup of the server virtual image. It includes dependencies on ImageMagick, Ruby > 2.1, the MySQL client libraries, Apache2, and all the required libraries for Passenger. Once this package is installed, the Concerto system should be up and running.
 
 ## Building the Packages and Updating the Concerto-Signage Repository
 * Make sure the following tools are installed: gpg, lintian, dbconfig-common, and reprepro.
