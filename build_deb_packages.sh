@@ -106,7 +106,7 @@ reprepro --component main --ask-passphrase -vb . includedeb ${RELEASE} ../debs/c
 cd ..
 tar -czf packages.tar.gz packages
 cd packages
-dkpg-scanpackages . | gzip -9c >/tmp/Packages.gz
+dpkg-scanpackages . | gzip -9c >/tmp/Packages.gz
 mv /tmp/Packages.gz ./
 
 echo -e "\nfinished"

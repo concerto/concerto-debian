@@ -22,7 +22,7 @@ docker run -it builder bash -l
 
 If you want, you can test the concerto-full package on the debian instance you build it on.  Just add
 ```
-deb http://localhost buster main
+deb http://localhost:8000 buster main
 ```
 To your /etc/apt/sources.list and then `apt update && apt install -y concerto-full`
 
