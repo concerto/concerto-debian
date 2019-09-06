@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e # lintian wants this script to exit when there are errors
 
+PATH="$PATH:/usr/local/bin"
+
 #Source debconf library.
 . /usr/share/debconf/confmodule
 
