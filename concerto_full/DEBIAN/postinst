@@ -31,7 +31,10 @@ chmod g+w /usr/share/concerto/public
 #remove any old assets sitting around - Concerto will recompile
 rm -rf /usr/share/concerto/public/assets
 
-gem install bundler --no-ri --no-rdoc
+# use the same version of bundler as the Gemfile
+BUNDLER_VERSION=$(tail -1 /usr/share/concerto/Gemfile.lock)
+
+gem install bundler -v "$BUNDLER_VERSION" --no-ri --no-rdoc
 cd /usr/share/concerto
 bundle install --without postgres development --path=vendor/bundle
 RAILS_ENV=production bundle exec rake assets:precompile
@@ -45,6 +48,9 @@ chmod 666 /usr/share/concerto/log/production.log
 # this should work, but fails, even when run from shell prompt
 # RAILS_ENV=production rake db:migrate
 
+if [ -f /etc/apache2/sites-enabled/000-default.conf ]; then
+  a2dissite 000-default
+fi
 a2ensite concerto.conf
 a2enmod passenger
 invoke-rc.d apache2 restart
