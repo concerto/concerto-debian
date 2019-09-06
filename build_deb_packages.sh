@@ -93,6 +93,8 @@ echo -e "\nPreparing Packages for Deployment...\n"
 echo "  removing old packaging..."
 rm -rf packages.tar.gz packages/
 mkdir -p packages/conf
+pwd
+pwd
 cp distributions packages/conf/
 cd packages
 echo "  preparing concerto_full package..."

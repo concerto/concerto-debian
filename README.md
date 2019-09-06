@@ -17,13 +17,30 @@ This Git repository contains everything needed to create the Concerto Debian pac
 
 ```
 docker run -t -i --name builder debian bash -l
-apt update && apt install git curl vim gpg lintian dbconfig-common reprepro
+apt update && apt install git curl vim gpg lintian dbconfig-common reprepro ruby
 git clone https://github.com/concerto/concerto-debian
 cd concerto-debian
+./build_deb_packages.sh
 ```
+
+Prepare a local apt repository.
+
+```
+mkdir -p /var/www/html
+apt install -y webfs
+sed -i 's/web_port=.*/web_port="80"/g' /etc/webfsd.conf
+sed -i 's/web_root=.*/web_root="\/concerto-debian\/packages"/g' /etc/webfsd.conf
+service webfs start
+```
+
 
 ### Using a docker image for testing
 
+```
+docker run -t -i --name concertofull_test ubuntu bash -l
+apt update && apt install -y openssh-client
+
+```
 
 ## Installing the Packages from the Concerto-Signage Repository
 1. Run the `scripts/add_repo.sh` script and then
