@@ -13,6 +13,18 @@ This Git repository contains everything needed to create the Concerto Debian pac
 * Run the `./build_deb_packages.sh` script.
 * Upload the `packages.tar.gz` file, that is produced, to the download server and unpack it.
 
+### Using a docker image for building
+
+```
+docker run -t -i --name builder debian bash -l
+apt update && apt install git curl vim gpg lintian dbconfig-common reprepro
+git clone https://github.com/concerto/concerto-debian
+cd concerto-debian
+```
+
+### Using a docker image for testing
+
+
 ## Installing the Packages from the Concerto-Signage Repository
 1. Run the `scripts/add_repo.sh` script and then
 2. Run `sudo apt-get install concerto-full` or specify concerto-lite instead of concerto-full, depending upon which package you want to install.

@@ -1,6 +1,10 @@
 #!/bin/bash
 # this script will build deb packages (full and lite) for the latest tag in the concerto repo
 
+# this is the debian release our build is based on
+RELEASE="buster"
+cat distributions | sed -e "s/Codename: .*/Codename: ${RELEASE}/g" | sed -e "s/Pull: .*/Pull: ${RELEASE}/g" >distributions
+
 source "./build-scripts/debian-common.sh"
 
 # ---------------------------------------------------
@@ -92,9 +96,9 @@ mkdir -p packages/conf
 cp distributions packages/conf/
 cd packages
 echo "  preparing concerto_full package..."
-reprepro --component main --ask-passphrase -vb . includedeb stretch ../debs/concerto-full_${control_version}_all.deb
+reprepro --component main --ask-passphrase -vb . includedeb ${RELEASE} ../debs/concerto-full_${control_version}_all.deb
 echo "  preparing concerto_lite package..."
-reprepro --component main --ask-passphrase -vb . includedeb stretch ../debs/concerto-lite_${control_version}_all.deb
+reprepro --component main --ask-passphrase -vb . includedeb ${RELEASE} ../debs/concerto-lite_${control_version}_all.deb
 cd ..
 tar -czf packages.tar.gz packages
 
