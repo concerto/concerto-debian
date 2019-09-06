@@ -8,7 +8,6 @@ RUN git clone https://github.com/concerto/concerto-debian
 RUN mkdir -p /concerto-debian/packages
 #RUN sed -i 's/web_port=.*/web_port="80"/g' /etc/webfsd.conf
 RUN sed -i 's/web_root=.*/web_root="\/concerto-debian\/packages"/g' /etc/webfsd.conf
-RUN service webfs start
 
 # generate a sample key for our testing our deb via our sample apt repository
 COPY scripts/sample_key.sh /tmp/
@@ -20,3 +19,5 @@ RUN cat /concerto-debian/sample.key | apt-key add -
 
 # create the deb packages
 RUN cd concerto-debian && ./build_deb_packages.sh
+
+CMD service webfs start
