@@ -95,6 +95,9 @@ echo "  removing old packaging..."
 rm -rf packages.tar.gz packages/
 mkdir -p packages/conf
 cp distributions packages/conf/
+if [ -f sample.key ]; then
+  cp sample.key /packages/
+fi
 cd packages
 echo "  preparing concerto_full package..."
 reprepro --component main --ask-passphrase -vb . includedeb ${RELEASE} ../debs/concerto-full_${control_version}_all.deb
