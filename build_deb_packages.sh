@@ -96,7 +96,7 @@ rm -rf packages.tar.gz packages/
 mkdir -p packages/conf
 cp distributions packages/conf/
 if [ -f sample.key ]; then
-  cp sample.key /packages/
+  cp sample.key packages/
 fi
 cd packages
 echo "  preparing concerto_full package..."
@@ -105,5 +105,8 @@ echo "  preparing concerto_lite package..."
 reprepro --component main --ask-passphrase -vb . includedeb ${RELEASE} ../debs/concerto-lite_${control_version}_all.deb
 cd ..
 tar -czf packages.tar.gz packages
+cd packages
+dkpg-scanpackages . | gzip -9c >/tmp/Packages.gz
+mv /tmp/Packages.gz ./
 
 echo -e "\nfinished"

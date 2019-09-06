@@ -16,20 +16,17 @@ This Git repository contains everything needed to create the Concerto Debian pac
 ### Using a docker image for building the packages and establishing a test apt repo
 
 ```
-docker run -t -i --expose=80 --name builder debian bash -l
-apt update && apt install -y git curl vim gpg lintian dbconfig-common reprepro ruby webfs
-git clone https://github.com/concerto/concerto-debian
-mkdir -p /concerto-debian/packages
-sed -i 's/web_port=.*/web_port="80"/g' /etc/webfsd.conf
-sed -i 's/web_root=.*/web_root="\/concerto-debian\/packages"/g' /etc/webfsd.conf
-service webfs start
-gpg --gen-key
-gpg --armor --export sample@example.com --output sample@example.com.gpg.key
-cd concerto-debian
-./build_deb_packages.sh
+docker build -t builder -f builder.dockerfile .
+docker run -it builder bash -l
 ```
 
-### Using a docker image for testing
+If you want, you can test the concerto-full package on the debian instance you build it on.  Just add
+```
+deb http://localhost buster main
+```
+To your /etc/apt/sources.list and then `apt update && apt install -y concerto-full`
+
+### Using a docker image for testing installation
 
 ```
 docker run -t -i --name concertofull_test ubuntu bash -l
