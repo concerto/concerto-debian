@@ -13,33 +13,31 @@ This Git repository contains everything needed to create the Concerto Debian pac
 * Run the `./build_deb_packages.sh` script.
 * Upload the `packages.tar.gz` file, that is produced, to the download server and unpack it.
 
-### Using a docker image for building
+### Using a docker image for building the packages and establishing a test apt repo
 
 ```
-docker run -t -i --name builder debian bash -l
-apt update && apt install git curl vim gpg lintian dbconfig-common reprepro ruby
+docker run -t -i --expose=80 --name builder debian bash -l
+apt update && apt install -y git curl vim gpg lintian dbconfig-common reprepro ruby webfs
 git clone https://github.com/concerto/concerto-debian
-cd concerto-debian
-./build_deb_packages.sh
-```
-
-Prepare a local apt repository.
-
-```
-mkdir -p /var/www/html
-apt install -y webfs
+mkdir -p /concerto-debian/packages
 sed -i 's/web_port=.*/web_port="80"/g' /etc/webfsd.conf
 sed -i 's/web_root=.*/web_root="\/concerto-debian\/packages"/g' /etc/webfsd.conf
 service webfs start
+gpg --gen-key
+gpg --armor --export sample@example.com --output sample@example.com.gpg.key
+cd concerto-debian
+./build_deb_packages.sh
 ```
-
 
 ### Using a docker image for testing
 
 ```
 docker run -t -i --name concertofull_test ubuntu bash -l
-apt update && apt install -y openssh-client
-
+echo "deb http://serverabove/ buster main" >>/etc/apt/sources.list
+apt update
+apt install -y wget gnupg2
+wget -O - http://172.17.0.2/sample.key | apt-key add -
+apt install -y concerto-full
 ```
 
 ## Installing the Packages from the Concerto-Signage Repository
