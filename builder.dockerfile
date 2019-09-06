@@ -20,4 +20,6 @@ RUN cat /concerto-debian/sample.key | apt-key add -
 # create the deb packages
 RUN cd concerto-debian && ./build_deb_packages.sh
 
+RUN echo "deb http://localhost:8000 buster main" >>/etc/apt/sources.list
+
 CMD service webfs start
