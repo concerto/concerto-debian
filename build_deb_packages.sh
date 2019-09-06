@@ -3,7 +3,8 @@
 
 # this is the debian release our build is based on
 RELEASE="buster"
-cat distributions | sed -e "s/Codename: .*/Codename: ${RELEASE}/g" | sed -e "s/Pull: .*/Pull: ${RELEASE}/g" >distributions
+sed -i "s/Codename: .*/Codename: ${RELEASE}/g" distributions
+sed -i "s/Pull: .*/Pull: ${RELEASE}/g" distributions
 
 source "./build-scripts/debian-common.sh"
 
@@ -93,8 +94,6 @@ echo -e "\nPreparing Packages for Deployment...\n"
 echo "  removing old packaging..."
 rm -rf packages.tar.gz packages/
 mkdir -p packages/conf
-pwd
-pwd
 cp distributions packages/conf/
 cd packages
 echo "  preparing concerto_full package..."
