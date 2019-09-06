@@ -30,9 +30,9 @@ To your /etc/apt/sources.list and then `apt update && apt install -y concerto-fu
 
 ```
 docker run -t -i --name concertofull_test ubuntu bash -l
-echo "deb http://serverabove:8000 buster main" >>/etc/apt/sources.list
+echo "deb http://172.17.0.2:8000 buster main" >>/etc/apt/sources.list
 apt update
-apt install -y wget gnupg2
+apt install -y wget gnupg2 vim dialog
 wget -O - http://172.17.0.2:8000/sample.key | apt-key add -
 apt install -y concerto-full
 ```
