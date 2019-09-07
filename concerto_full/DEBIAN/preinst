@@ -1,0 +1,2 @@
+#!/bin/sh
+set -e # lintian wants this script to exit when there are errors

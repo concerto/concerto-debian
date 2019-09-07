@@ -17,10 +17,13 @@ This Git repository contains everything needed to create the Concerto Debian pac
 
 ```
 cd docker
+docker build -t builder --network host -f builder.dockerfile ..
 docker-compose up
 ```
 
-This will create an instance (builder) that will create the packages and place them in a local apt repository (signed with a sample key) for testing.  You may want to rebuild the packages or specify which version of concerto you want to build packages for.  You can do this by getting into the container with `docker exec -it builder bash -l` and then going into the `/concerto-debian` directory and running the `./build_deb_packages.sh` script as mentioned in this document.
+This will create an instance (builder) that will create the packages and place them in a local apt repository (signed with a sample key) for testing.  
+
+You may want to rebuild the packages or specify which version of concerto you want to build packages for.  You can do this by getting into the container with `docker exec -it docker_builder_1 bash -l` and then going into the `/concerto-debian` directory and running the `./build_deb_packages.sh` script as mentioned in this document.  You wont want to use the `docker-compose up` command however.  Instead you'll want to `docker-compose build` to build the images and containers, and then start just the docker_builder_1 container `docker container start docker_builder_1` so you can get the packages updated before the other instances start downloading them.
 
 This will also create a test instances for installing the full and lite versions on debian and ubuntu.  You can use
  `docker container inspect busterfull` to find out the ip address to browse to, to verify the application after 
@@ -59,7 +62,9 @@ The concerto-full package will place a concerto site configuration file in /etc/
 * build-essential
 * imagemagick
 * libruby1.9.1
-* ruby2.1-full
+* ruby2.3-full
+* nodejs
+* git
 
 ### Passenger Dependencies
 * apache2-mpm-worker

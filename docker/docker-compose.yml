@@ -1,18 +1,18 @@
 version: "3"
 services:
-  builder:
-    build:
-      context: ..
-      dockerfile: docker/builder.dockerfile
+  # builder:
+  #   build:
+  #     context: ..
+  #     dockerfile: docker/builder.dockerfile
   busterfull:
-    depends_on: 
-      - builder
+    # depends_on: 
+    #   - builder
     build:
       context: ..
       dockerfile: docker/test.buster.full.dockerfile
   bionicfull:
-    depends_on: 
-      - builder
+    # depends_on: 
+    #   - builder
     build:
       context: ..
       dockerfile: docker/test.bionic.full.dockerfile
