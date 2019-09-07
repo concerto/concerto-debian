@@ -20,4 +20,4 @@ RUN chmod u+x /tmp/sample_key.sh && /tmp/sample_key.sh
 RUN cd concerto-debian && git pull origin buster-update && git checkout buster-update
 
 # create the deb packages, sleep to keep the container running
-CMD cd concerto-debian && git pull && ./build_deb_packages.sh && sleep infinity
+CMD cd concerto-debian && git pull && ./build_deb_packages.sh && echo "running until stopped..." && sleep infinity
