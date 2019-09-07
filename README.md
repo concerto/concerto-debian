@@ -13,24 +13,24 @@ This Git repository contains everything needed to create the Concerto Debian pac
 * Run the `./build_deb_packages.sh` script.
 * Upload the `packages.tar.gz` file, that is produced, to the download server and unpack it.
 
-### Using a docker image for building and testing
+### Using a Docker Image for Building debs and Testing them
+
+Make sure you have docker installed on your local machine.  Git clone this repo and then go into its directory and 
 
 ```
 cd docker
-docker build -t builder --no-cache --network host -f builder.dockerfile ..
-docker run --rm -it builder
-docker-compose up
+docker-compose up --build
 ```
 
-This will create an instance (builder) that will create the packages and place them in a local apt repository (signed with a sample key) for testing.  
+This will create three images-- one for building the deb and hosting an apt repo, one for testing the packages on a debian:buster machine, and one for testing the packages on an ubuntu:bionic machine. It will also start three containers.
 
-You may want to rebuild the packages or specify which version of concerto you want to build packages for.  You can do this by getting into the container with `docker exec -it docker_builder_1 bash -l` and then going into the `/concerto-debian` directory and running the `./build_deb_packages.sh` script as mentioned in this document.  You wont want to use the `docker-compose up` command however.  Instead you'll want to `docker-compose build` to build the images and containers, and then start just the docker_builder_1 container `docker container start docker_builder_1` so you can get the packages updated before the other instances start downloading them.
+The first container (docker_builder_1) will create a key, create the packages, and serve them in a local apt repository for testing.
 
-This will also create a test instances for installing the full and lite versions on debian and ubuntu.  You can use
- `docker container inspect busterfull` to find out the ip address to browse to, to verify the application after 
- installation.  Each of these test instances will require some user interaction during the installation.
+> You may want to rebuild the packages or specify which version of concerto you want to build packages for.  You can do this by getting into the container with `docker exec -it docker_builder_1 bash -l` and then going into the `/concerto-debian` directory and running the `./build_deb_packages.sh` script as mentioned in this document.
 
-Running `docker-compose down` afterwards will clean up the images.
+This second container (docker_busterfull_1) has a dependency on the first, and will wait 30 seconds before trying to update and install concerto-full.  You can use `docker container inspect docker_busterfull_1` to find out the ip address so you can verify the application after installation.
+
+Running `docker-compose down` afterwards will clean up the containers.
 
 _Once you have approved the package, you need to either resign it with the actual key, or replace the sample key with the real
 key and rebuild the packages._

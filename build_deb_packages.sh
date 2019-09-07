@@ -1,11 +1,6 @@
 #!/bin/bash
 # this script will build deb packages (full and lite) for the latest tag in the concerto repo
 
-# this is the debian release our build is based on
-RELEASE="buster"
-#sed -i "s/Codename: .*/Codename: ${RELEASE}/g" distributions
-#sed -i "s/Pull: .*/Pull: ${RELEASE}/g" distributions
-
 source "./build-scripts/debian-common.sh"
 
 # ---------------------------------------------------
@@ -99,10 +94,12 @@ if [ -f sample.key ]; then
   cp sample.key packages/
 fi
 cd packages
-echo "  preparing concerto_full package..."
-reprepro --component main --ask-passphrase -vb . includedeb ${RELEASE} ../debs/concerto-full_${control_version}_all.deb
-echo "  preparing concerto_lite package..."
-reprepro --component main --ask-passphrase -vb . includedeb ${RELEASE} ../debs/concerto-lite_${control_version}_all.deb
+echo "  preparing concerto_full packages..."
+reprepro --component main --ask-passphrase -vb . includedeb buster ../debs/concerto-full_${control_version}_all.deb
+reprepro --component main --ask-passphrase -vb . includedeb bionic ../debs/concerto-full_${control_version}_all.deb
+echo "  preparing concerto_lite packages..."
+reprepro --component main --ask-passphrase -vb . includedeb buster ../debs/concerto-lite_${control_version}_all.deb
+reprepro --component main --ask-passphrase -vb . includedeb bionic ../debs/concerto-lite_${control_version}_all.deb
 cd ..
 tar -czf packages.tar.gz packages
 cd packages

@@ -9,3 +9,9 @@ if [ -f /usr/share/dbconfig-common/dpkg/prerm.mysql ]; then
   . /usr/share/dbconfig-common/dpkg/prerm.mysql 
   dbc_go concerto-full $@
 fi
+
+a2dissite concerto
+apache2ctl restart
+
+invoke-rc.d concerto stop
+update-rc.d -f concerto remove

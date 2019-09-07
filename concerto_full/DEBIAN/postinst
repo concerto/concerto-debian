@@ -61,10 +61,10 @@ if [ -f /etc/apache2/sites-enabled/000-default.conf ]; then
 fi
 a2ensite concerto.conf
 a2enmod passenger
-service apache2 restart
+invoke-rc.d apache2 restart
 
 update-rc.d concerto defaults
-service concerto start
+invoke-rc.d concerto start
 
 # according to the url below, if your package uses debconf (which ours does)
 # and it starts a daemon that doesn't close all inherited file descriptors

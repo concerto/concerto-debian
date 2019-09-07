@@ -14,10 +14,3 @@ if [ "$1" = "purge" -a -e /usr/share/debconf/confmodule ]; then
     # Remove my changes to the db.
     db_purge
 fi
-
-a2dissite concerto
-invoke-rc.d concerto stop
-update-rc.d -f concerto remove
-apache2ctl restart
-
-

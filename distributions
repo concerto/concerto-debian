@@ -14,4 +14,4 @@ Architectures: i386 amd64 source
 Components: main
 Description: Concerto debian package repo
 SignWith: yes
-Pull: buster
+Pull: bionic
