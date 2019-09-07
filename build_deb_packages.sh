@@ -3,8 +3,8 @@
 
 # this is the debian release our build is based on
 RELEASE="buster"
-sed -i "s/Codename: .*/Codename: ${RELEASE}/g" distributions
-sed -i "s/Pull: .*/Pull: ${RELEASE}/g" distributions
+#sed -i "s/Codename: .*/Codename: ${RELEASE}/g" distributions
+#sed -i "s/Pull: .*/Pull: ${RELEASE}/g" distributions
 
 source "./build-scripts/debian-common.sh"
 

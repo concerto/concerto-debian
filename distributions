@@ -1,8 +1,17 @@
 Origin: dl.concerto-signage.org
 Label: apt repository
-Codename: stretch
+Codename: buster
 Architectures: i386 amd64 source
 Components: main
 Description: Concerto debian package repo
 SignWith: yes
-Pull: stretch
+Pull: buster
+
+Origin: dl.concerto-signage.org
+Label: apt repository
+Codename: bionic
+Architectures: i386 amd64 source
+Components: main
+Description: Concerto debian package repo
+SignWith: yes
+Pull: buster
