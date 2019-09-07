@@ -13,29 +13,21 @@ This Git repository contains everything needed to create the Concerto Debian pac
 * Run the `./build_deb_packages.sh` script.
 * Upload the `packages.tar.gz` file, that is produced, to the download server and unpack it.
 
-### Using a docker image for building the packages and establishing a test apt repo
+### Using a docker image for building and testing
 
 ```
-docker build -t builder -f builder.dockerfile .
-docker run -it builder bash -l
+docker-compose up -f docker/docker-compose.yml
 ```
 
-If you want, you can test the concerto-full package on the debian instance you build it on.  Just add
-```
-deb http://localhost:8000 buster main
-```
-To your /etc/apt/sources.list and then `apt update && apt install -y concerto-full`
+This will create an instance (builder) that will create the packages and place them in a local apt repository for testing.  You may
+want to rebuild the packages or specify which version of concerto you want to build packages for.  You can do this by getting into the container with `docker exec -it builder bash -l` and then going into the `/concerto-debian` directory and running 
+the `./build_deb_packages.sh` script as mentioned in this document.
 
-### Using a docker image for testing installation
+This will also create a test instances for installing the full and lite versions on debian and ubuntu.  You can use
+ `docker container inspect busterfull` to find out the ip address to browse to, to verify the application after 
+ installation.  Each of these test instances will require some user interaction during the installation.
 
-```
-docker run -t -i --name concertofull_test ubuntu bash -l
-echo "deb http://172.17.0.2:8000 buster main" >>/etc/apt/sources.list
-apt update
-apt install -y wget gnupg2 vim dialog
-wget -O - http://172.17.0.2:8000/sample.key | apt-key add -
-apt install -y concerto-full
-```
+Running `docker-compose down` afterwards will clean up the images.
 
 ## Installing the Packages from the Concerto-Signage Repository
 1. Run the `scripts/add_repo.sh` script and then

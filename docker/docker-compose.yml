@@ -1,0 +1,14 @@
+Version: "3"
+services:
+  builder:
+    build:
+      context: ..
+      dockerfile: builder.dockerfile
+  busterfull:
+    build:
+      context: ..
+      dockerfile: test.buster.full.dockerfile
+  bionicfull:
+    build:
+      context: ..
+      dockerfile: test.bionic.full.dockerfile
