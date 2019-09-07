@@ -16,18 +16,20 @@ This Git repository contains everything needed to create the Concerto Debian pac
 ### Using a docker image for building and testing
 
 ```
-docker-compose up -f docker/docker-compose.yml
+cd docker
+docker-compose up
 ```
 
-This will create an instance (builder) that will create the packages and place them in a local apt repository for testing.  You may
-want to rebuild the packages or specify which version of concerto you want to build packages for.  You can do this by getting into the container with `docker exec -it builder bash -l` and then going into the `/concerto-debian` directory and running 
-the `./build_deb_packages.sh` script as mentioned in this document.
+This will create an instance (builder) that will create the packages and place them in a local apt repository (signed with a sample key) for testing.  You may want to rebuild the packages or specify which version of concerto you want to build packages for.  You can do this by getting into the container with `docker exec -it builder bash -l` and then going into the `/concerto-debian` directory and running the `./build_deb_packages.sh` script as mentioned in this document.
 
 This will also create a test instances for installing the full and lite versions on debian and ubuntu.  You can use
  `docker container inspect busterfull` to find out the ip address to browse to, to verify the application after 
  installation.  Each of these test instances will require some user interaction during the installation.
 
 Running `docker-compose down` afterwards will clean up the images.
+
+_Once you have approved the package, you need to either resign it with the actual key, or replace the sample key with the real
+key and rebuild the packages._
 
 ## Installing the Packages from the Concerto-Signage Repository
 1. Run the `scripts/add_repo.sh` script and then
@@ -51,7 +53,7 @@ In addition to the dependencies listed below, each package will place the Concer
 * Creation of mysql-based database.yml in the Concerto config directory
 * Installation of a service script: /etc/init.d/concerto
 
-The concerto-full package will place a concerto site configuration file in /etc/apache2/sites-available that includes Passenger and contains a reasonable Concerto vhost configuration.
+The concerto-full package will place a concerto site configuration file in /etc/apache2/sites-available that includes Passenger and contains a reasonable Concerto vhost configuration. It will also disable the 000-default site.
 
 ### Concerto Package Dependencies
 * build-essential

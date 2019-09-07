@@ -18,4 +18,5 @@ RUN cd concerto-debian && git pull origin buster-update
 # create the deb packages
 RUN cd concerto-debian && ./build_deb_packages.sh
 
-CMD service webfs start
+# sleep to keep the container running
+CMD service webfs start && sleep infinity
