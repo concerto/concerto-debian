@@ -22,4 +22,8 @@ RUN cd concerto-debian && ./build_deb_packages.sh
 
 RUN echo "deb http://localhost:8000 buster main" >>/etc/apt/sources.list
 
+# prepare image for installing any service (in case we want to test installation of concerto)
+# https://stackoverflow.com/a/48782486/1778068
+RUN echo exit 0 >/usr/sbin/policy-rc.d
+
 CMD service webfs start
