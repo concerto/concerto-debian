@@ -1,6 +1,8 @@
 #!/bin/sh
 set -e
 
+PATH="$PATH:/usr/local/bin"
+
 #Source debconf library.
 . /usr/share/debconf/confmodule
 
@@ -15,11 +17,18 @@ mkdir -p /usr/share/concerto/log
 chown -R www-data:www-data /usr/share/concerto
 chmod 775 /usr/share/concerto/config/database.yml
 
-gem install bundler --no-ri --no-rdoc
+# use the same version of bundler as the Gemfile
+BUNDLER_VERSION=$(tail -1 /usr/share/concerto/Gemfile.lock)
+
+gem install bundler -v "$BUNDLER_VERSION" --no-ri --no-rdoc
 cd /usr/share/concerto
 su -s /bin/bash -c 'bundle install --without postgres development --path=vendor/bundle' www-data
 su -s /bin/bash -c 'RAILS_ENV=production bundle exec rake assets:precompile' www-data
 su -s /bin/bash -c 'bundle clean -V' www-data
+
+chmod -R 777 /usr/share/concerto/tmp
+chown -R www-data:www-data /usr/share/concerto
+chmod 666 /usr/share/concerto/log/production.log
 
 update-rc.d concerto defaults
 

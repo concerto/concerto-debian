@@ -17,7 +17,8 @@ This Git repository contains everything needed to create the Concerto Debian pac
 
 ```
 cd docker
-docker build -t builder --network host -f builder.dockerfile ..
+docker build -t builder --no-cache --network host -f builder.dockerfile ..
+docker run --rm -it builder
 docker-compose up
 ```
 
