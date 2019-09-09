@@ -6,7 +6,7 @@ EXPOSE 80
 # https://stackoverflow.com/a/48782486/1778068
 RUN echo exit 0 >/usr/sbin/policy-rc.d
 
-RUN apt update && apt install -y git curl vim gpg lintian dbconfig-common reprepro ruby webfs dialog apt-utils procps
+RUN apt update && apt install -y -q git curl vim gpg lintian dbconfig-common reprepro ruby webfs dialog apt-utils procps
 
 RUN git clone https://github.com/concerto/concerto-debian
 RUN mkdir -p /concerto-debian/packages

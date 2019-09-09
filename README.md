@@ -30,7 +30,7 @@ The first container (docker_builder_1) will create a key, create the packages, a
 
 > You may want to rebuild the packages or specify which version of concerto you want to build packages for.  You can do this by getting into the container with `docker exec -it docker_builder_1 bash -l` and then going into the `/concerto-debian` directory and running the `./build_deb_packages.sh` script as mentioned in this document.
 
-This second container (docker_busterfull_1) has a dependency on the first, and will wait 30 seconds before trying to update and install concerto-full.  You can use `docker container inspect docker_busterfull_1` to find out the ip address so you can verify the application after installation.
+This second container (docker_buster_1) has a dependency on the first, and will wait 30 seconds before trying to update and install concerto-full.  You can use `docker container inspect docker_buster_1` to find out the ip address so you can verify the application after installation.
 
 Running `docker-compose down` afterwards will clean up the containers.
 
