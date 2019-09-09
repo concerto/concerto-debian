@@ -8,6 +8,8 @@ if [ -f /usr/share/dbconfig-common/dpkg/config.mysql ]; then
   dbc_dbuser="concerto"
   dbc_dbname="concerto_production"
   dbc_dbtypes="mysql"
+  dbc_mysql_createdb_encoding="utf8mb4"
+
   . /usr/share/dbconfig-common/dpkg/config.mysql 
   dbc_go concerto-full $@
 fi
