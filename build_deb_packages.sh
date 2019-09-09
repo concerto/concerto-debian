@@ -97,9 +97,13 @@ cd packages
 echo "  preparing concerto_full packages..."
 reprepro --component main --ask-passphrase -vb . includedeb buster ../debs/concerto-full_${control_version}_all.deb
 reprepro --component main --ask-passphrase -vb . includedeb bionic ../debs/concerto-full_${control_version}_all.deb
+reprepro --component main --ask-passphrase -vb . includedeb xenial ../debs/concerto-full_${control_version}_all.deb
+reprepro --component main --ask-passphrase -vb . includedeb stretch ../debs/concerto-full_${control_version}_all.deb
 echo "  preparing concerto_lite packages..."
 reprepro --component main --ask-passphrase -vb . includedeb buster ../debs/concerto-lite_${control_version}_all.deb
 reprepro --component main --ask-passphrase -vb . includedeb bionic ../debs/concerto-lite_${control_version}_all.deb
+reprepro --component main --ask-passphrase -vb . includedeb xenial ../debs/concerto-lite_${control_version}_all.deb
+reprepro --component main --ask-passphrase -vb . includedeb stretch ../debs/concerto-lite_${control_version}_all.deb
 cd ..
 tar -czf packages.tar.gz packages
 cd packages

@@ -15,3 +15,21 @@ Components: main
 Description: Concerto debian package repo
 SignWith: yes
 Pull: bionic
+
+Origin: dl.concerto-signage.org
+Label: apt repository
+Codename: stretch
+Architectures: i386 amd64 source
+Components: main
+Description: Concerto debian package repo
+SignWith: yes
+Pull: stretch
+
+Origin: dl.concerto-signage.org
+Label: apt repository
+Codename: xenial
+Architectures: i386 amd64 source
+Components: main
+Description: Concerto debian package repo
+SignWith: yes
+Pull: xenial
