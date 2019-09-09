@@ -14,3 +14,16 @@ if [ "$1" = "purge" -a -e /usr/share/debconf/confmodule ]; then
     # Remove my changes to the db.
     db_purge
 fi
+
+# remove the files that were generated after the install if we are purging
+if [ "$1" = "purge" ]; then
+  if [ -d /usr/share/concerto/vendor ]; then
+    rm -rf /usr/share/concerto/vendor
+  fi
+  if [ -d /usr/share/concerto/public ]; then
+    rm -rf /usr/share/concerto/public
+  fi
+  if [ -f /usr/share/concerto/config/database.yml ]; then
+    rm /usr/share/concerto/config/database.yml
+  fi
+fi
