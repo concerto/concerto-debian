@@ -10,8 +10,7 @@ if [ -f /usr/share/dbconfig-common/dpkg/prerm.mysql ]; then
   dbc_go concerto-full $@
 fi
 
+apache2ctl stop
 a2dissite concerto
-apache2ctl restart
 
 invoke-rc.d concerto stop
-update-rc.d -f concerto remove

@@ -44,9 +44,6 @@ cd /usr/share/concerto
 su -s /bin/bash -c 'bundle install --without postgres development --path=vendor/bundle' www-data
 su -s /bin/bash -c 'RAILS_ENV=production bundle exec rake assets:precompile' www-data
 su -s /bin/bash -c 'bundle clean -V' www-data
-# bundle install --without postgres development --path=vendor/bundle
-# RAILS_ENV=production bundle exec rake assets:precompile
-# bundle clean -V
 
 chmod -R 777 /usr/share/concerto/tmp
 chown -R www-data:www-data /usr/share/concerto

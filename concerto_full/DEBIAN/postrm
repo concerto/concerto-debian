@@ -15,6 +15,8 @@ if [ "$1" = "purge" -a -e /usr/share/debconf/confmodule ]; then
     db_purge
 fi
 
+update-rc.d -f concerto remove
+
 # remove the files that were generated after the install if we are purging
 if [ "$1" = "purge" ]; then
   if [ -d /usr/share/concerto/vendor ]; then
@@ -27,3 +29,5 @@ if [ "$1" = "purge" ]; then
     rm /usr/share/concerto/config/database.yml
   fi
 fi
+
+apache2ctl start
