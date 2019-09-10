@@ -16,15 +16,15 @@ services:
     build:
       context: ..
       dockerfile: docker/test.bionic.dockerfile
-  stretch:
-    depends_on: 
-      - builder
-    build:
-      context: ..
-      dockerfile: docker/test.stretch.dockerfile
-  xenial:
-    depends_on: 
-      - builder
-    build:
-      context: ..
-      dockerfile: docker/test.xenial.dockerfile
+  # stretch:
+  #   depends_on: 
+  #     - builder
+  #   build:
+  #     context: ..
+  #     dockerfile: docker/test.stretch.dockerfile
+  # xenial:
+  #   depends_on: 
+  #     - builder
+  #   build:
+  #     context: ..
+  #     dockerfile: docker/test.xenial.dockerfile
