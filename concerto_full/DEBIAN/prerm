@@ -1,4 +1,5 @@
-#!/bin/sh -e
+#!/bin/sh
+set -e # lintian wants this script to exit when there are errors
 
 #Source debconf library.
 . /usr/share/debconf/confmodule
@@ -8,3 +9,8 @@ if [ -f /usr/share/dbconfig-common/dpkg/prerm.mysql ]; then
   . /usr/share/dbconfig-common/dpkg/prerm.mysql 
   dbc_go concerto-full $@
 fi
+
+apache2ctl stop
+a2dissite concerto
+
+invoke-rc.d concerto stop

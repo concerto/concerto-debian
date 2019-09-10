@@ -1,3 +1,6 @@
+#!/bin/sh
+set -e # lintian wants this script to exit when there are errors
+
 if [ "$1" = "purge" -a -e /usr/share/debconf/confmodule ]; then
     # Source debconf library.
     . /usr/share/debconf/confmodule
@@ -5,11 +8,16 @@ if [ "$1" = "purge" -a -e /usr/share/debconf/confmodule ]; then
     db_purge
 fi
 
-invoke-rc.d concerto stop
-
 # remove the service file if it exists so no error is returned by the following command
 if [ -f /etc/init.d/concerto ]; then
 	rm /etc/init.d/concerto
 fi
 
 update-rc.d concerto remove
+
+# remove the entire application directory if purging
+if [ "$1" = "purge" ]; then
+  if [ -d /usr/share/concerto ]; then
+    rm -rf /usr/share/concerto
+  fi
+fi

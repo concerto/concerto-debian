@@ -32,20 +32,24 @@ done
 # ---------------------------------------------------
 # Fetch Concerto version tag from Github and read the flatfile for the number
 # ---------------------------------------------------
+# $version is the version tag of concerto from github that we want to build for
+# $control_version is used for naming the deb package
 ruby get_version_tag.rb
 version=`cat VERSION`
-if [ "${override_version}" != "" ]; then
+
+# $override_version is the user specified version/branch to pull from concerto github.
+# If this is blank then we will use $version, if it is "master" then we will use "master" and
+# set the $control_version to 0.0.0 since that needs a number.
+if [ "${override_version}" = "master" ]; then
   echo -e "\nBuilding packages for VERSION ${override_version} but repo is at ${version} !!\n"
   version="${override_version}"
-else
-  echo -e "\nBuilding packages for VERSION ${version}\n"
-fi
-
-# update the control_version variable which is used for buidling the package
-if [[ "${version}" =~ ^([0-9]\.){3}.+ ]]; then
-  # this is a version tag
+  control_version="0.0.0"
+elif [ "${override_version}" != "" ]; then
+  echo -e "\nBuilding packages for VERSION ${override_version} but repo is at ${version} !!\n"
+  version="${override_version}"
   control_version="${version}"
 else
+  echo -e "\nBuilding packages for VERSION ${version}\n"
   control_version="${version}"
 fi
 
@@ -90,12 +94,24 @@ echo "  removing old packaging..."
 rm -rf packages.tar.gz packages/
 mkdir -p packages/conf
 cp distributions packages/conf/
+if [ -f sample.key ]; then
+  cp sample.key packages/
+fi
 cd packages
-echo "  preparing concerto_full package..."
+echo "  preparing concerto_full packages..."
+reprepro --component main --ask-passphrase -vb . includedeb buster ../debs/concerto-full_${control_version}_all.deb
+reprepro --component main --ask-passphrase -vb . includedeb bionic ../debs/concerto-full_${control_version}_all.deb
+reprepro --component main --ask-passphrase -vb . includedeb xenial ../debs/concerto-full_${control_version}_all.deb
 reprepro --component main --ask-passphrase -vb . includedeb stretch ../debs/concerto-full_${control_version}_all.deb
-echo "  preparing concerto_lite package..."
+echo "  preparing concerto_lite packages..."
+reprepro --component main --ask-passphrase -vb . includedeb buster ../debs/concerto-lite_${control_version}_all.deb
+reprepro --component main --ask-passphrase -vb . includedeb bionic ../debs/concerto-lite_${control_version}_all.deb
+reprepro --component main --ask-passphrase -vb . includedeb xenial ../debs/concerto-lite_${control_version}_all.deb
 reprepro --component main --ask-passphrase -vb . includedeb stretch ../debs/concerto-lite_${control_version}_all.deb
 cd ..
 tar -czf packages.tar.gz packages
+cd packages
+dpkg-scanpackages . | gzip -9c >/tmp/Packages.gz
+mv /tmp/Packages.gz ./
 
 echo -e "\nfinished"

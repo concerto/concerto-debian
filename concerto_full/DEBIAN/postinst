@@ -1,11 +1,14 @@
 #!/bin/sh
 set -e # lintian wants this script to exit when there are errors
 
+PATH="$PATH:/usr/local/bin"
+
 #Source debconf library.
 . /usr/share/debconf/confmodule
 
 # source dbconfig-common shell library, and call the hook function
 if [ -f /usr/share/dbconfig-common/dpkg/postinst.mysql ]; then
+  dbc_mysql_createdb_encoding="utf8mb4"
   dbc_generate_include="template:/usr/share/concerto/config/database.yml"
   dbc_generate_include_args="-o template_infile=/usr/share/concerto/config/database.dbctemplate"
   dbc_generate_include_perms="644"
@@ -26,10 +29,18 @@ chown -R www-data:www-data /usr/share/concerto
 chmod 775 /usr/share/concerto/config/database.yml
 chmod g+w /usr/share/concerto/log
 chmod g+w /usr/share/concerto/public
+
 #remove any old assets sitting around - Concerto will recompile
 rm -rf /usr/share/concerto/public/assets
+# remove any old migration lock file
+if [ -f /usr/share/concerto/tmp/migration_tempfile ]; then
+  rm /usr/share/concerto/tmp/migration_tempfile
+fi
 
-gem install bundler --no-ri --no-rdoc
+# use the same version of bundler as the Gemfile
+BUNDLER_VERSION=$(tail -1 /usr/share/concerto/Gemfile.lock)
+
+gem install bundler -v "$BUNDLER_VERSION" --no-ri --no-rdoc
 cd /usr/share/concerto
 su -s /bin/bash -c 'bundle install --without postgres development --path=vendor/bundle' www-data
 su -s /bin/bash -c 'RAILS_ENV=production bundle exec rake assets:precompile' www-data
@@ -43,6 +54,9 @@ chmod 666 /usr/share/concerto/log/production.log
 # this should work, but fails, even when run from shell prompt
 # RAILS_ENV=production rake db:migrate
 
+if [ -f /etc/apache2/sites-enabled/000-default.conf ]; then
+  a2dissite 000-default
+fi
 a2ensite concerto.conf
 a2enmod passenger
 invoke-rc.d apache2 restart

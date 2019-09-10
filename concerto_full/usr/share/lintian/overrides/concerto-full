@@ -5,12 +5,14 @@
 # these control files are empty by design
 concerto-full binary: control-file-is-empty preinst
 concerto-full binary: control-file-is-empty prerm
+concerto-full binary: control-file-is-empty templates
+concerto-full binary: maintainer-script-empty preinst
 
 # this license file is part of the git repo
 concerto-full binary: extra-license-file usr/share/concerto/LICENSE
 
 # we know this is from the git repo-- it's how we bundle these packages-- with submodules
-concerto-full binary: package-contains-vcs-control-file usr/share/concerto/.gitignore
+concerto-full binary: package-contains-vcs-control-file usr/share/concerto/*
 
 # this is erroneously reported because our control file DOES have a dependency on ruby
 concerto-full binary: ruby-script-but-no-ruby-dep usr/share/concerto/install.rb
@@ -22,3 +24,12 @@ concerto-full binary: new-package-should-close-itp-bug
 
 # we'e got a rake file and it's actually ok
 concerto-full binary: unusual-interpreter usr/share/concerto/Rakefile #!rake
+concerto-full binary: missing-dep-for-interpreter rake*
+
+# these are not meant to be executed by the package
+concerto-full binary: script-not-executable usr/share/concerto/tools/service.clockwork.docker.sh
+concerto-full binary: script-not-executable usr/share/concerto/tools/service.worker.docker.sh
+concerto-full binary: script-not-executable usr/share/concerto/tools/startup.docker.sh
+
+# this is in our directory so it's ok
+concerto-full binary: maintainer-script-should-not-use-recursive-chown-or-chmod postinst:*
