@@ -17,9 +17,8 @@ RUN sed -i 's/web_root=.*/web_root="\/concerto-debian\/packages"/g' /etc/webfsd.
 COPY scripts/sample_key.sh /tmp/
 RUN chmod u+x /tmp/sample_key.sh && /tmp/sample_key.sh 
 
-# HACK! TODO! JUST UNTIL FINISHED TESTING! - get our branch, and change to always use master from concerto
-RUN cd concerto-debian && git pull origin buster-update && git checkout buster-update
-RUN sed -i 's/\$version/master/' /concerto-debian/build-scripts/debian-common.sh
+# HACK! change to always use master from concerto
+# RUN sed -i 's/\$version/master/' /concerto-debian/build-scripts/debian-common.sh
 
 # create the deb packages, sleep to keep the container running
 CMD cd concerto-debian && ./build_deb_packages.sh && service webfs restart && echo "running until stopped..." && sleep infinity

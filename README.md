@@ -8,36 +8,37 @@ This Git repository contains everything needed to create the Concerto Debian pac
 **concerto-full**
 : The full Concerto package closely replicates the setup of the server virtual image. It includes dependencies on ImageMagick, Ruby > 2.3, the MySQL client libraries, Apache2, and all the required libraries for Passenger. Once this package is installed, the Concerto system should be up and running.
 
-## Building the Packages and Updating the Concerto-Signage Repository
+## Building the Packages on your local machine and Updating the Concerto-Signage Repository
 
 * Make sure the following tools are installed: gpg, lintian, dbconfig-common, and reprepro.
 * Make sure the GPG keychain (available from a committer) is installed in your home directory.  You'll also need the passphrase for the key.
 * Run the `./build_deb_packages.sh` script.
 * Upload the `packages.tar.gz` file, that is produced, to the download server and unpack it.
 
-### Using a Docker Image for Building debs and Testing them
+## Building the Paclages Using Docker (and Testing them)
 
-Make sure you have docker installed on your local machine.  Git clone this repo and then go into its directory and 
+This section explains how you can build the packages in a docker container, and use other docker containers to test the packages. Make sure you have docker and git installed on your local machine.  Then git clone this concerto-debian repository, and 
 
 ```
-cd docker
+cd concerto-debian/docker
 docker-compose up --build --force-recreate
 ```
 
-This will create three images-- one for building the deb and hosting an apt repo, one for testing the packages on a debian:buster machine, and one for testing the packages on an ubuntu:bionic machine. It will also start three containers.
+This will create an image for building the deb packages and hosting them in a local apt repository.  It will also create additional images for testing the installation of the packages on various distributions.
 
-The first container (docker_builder_1) will create a key, create the packages, and serve them in a local apt repository for testing.
+The first container (docker_builder_1) will create a sample gpg key, create and sign the packages, and serve them in a local apt repository for testing.  You may want to rebuild the deb packages or specify which version of concerto you want to build packages for (it builds the latest concerto version by default).  You can do this by getting into the container with `docker exec -it docker_builder_1 bash -l` and then going into the `/concerto-debian` directory and running the `./build_deb_packages.sh` script as mentioned in this document.
 
-> You may want to rebuild the packages or specify which version of concerto you want to build packages for.  You can do this by getting into the container with `docker exec -it docker_builder_1 bash -l` and then going into the `/concerto-debian` directory and running the `./build_deb_packages.sh` script as mentioned in this document.
+The testing containers (docker_buster_1, for example) have a dependency on docker_builder_1, and will wait until it sees it's web server up and running (see the test_install.sh script that each testing container runs at startup) before trying to update and install concerto-full.  You can use `docker container inspect docker_buster_1` to find out the ip address so you can verify the concerto installation with your browser.
 
-This second container (docker_buster_1) has a dependency on the first, and will wait 30 seconds before trying to update and install concerto-full.  You can use `docker container inspect docker_buster_1` to find out the ip address so you can verify the application after installation.
+If you run `docker container ls` you should see each test container and the builder listed.  When a container fails it will no longer be running.  Once docker-compose has finished building them and the start up scripts have finished, this is an easy way to see if they have all successfully installed concerto-full.  You can check out the logs for one that failed by running `docker log docker_buster_1` for example.  You can also bring the failed one back up so you can get into it and troubleshoot by using `docker container start docker_buster_1` and then `docker exec -it docker_buster_1 bash -l`.
 
-Running `docker-compose down` afterwards will clean up the containers.
+Running `docker-compose down` afterwards will clean up the containers, but the images will still remain. You can remove the images if you want by running `docker image rm docker_buster` for each of them.
 
-_Once you have approved the package, you need to either resign it with the actual key, or replace the sample key with the real
-key and rebuild the packages._
+Once you have tested and verified the packages, you will need to either resign it with the actual gpg key, or replace the sample gpg key with the real key and rebuild the packages.  To replace the gpg key, scp the real GPG Keychain into the builder container and unzip it into a directory such as /tmp/ and then run `gpg --import /tmp/.gnupg/secring.gpg` you will need to enter the passphrase.  Then run `gpg --list-key` and find the numeric_identifier for the concerto key and change the concerto-debian/distributions file and replace each occurence of `SignWith: Yes` to `SignWith: numeric_identifier`. When that value is Yes, it chooses the first key it finds, when it is a specific identifier then it uses the specified key.  If you are going to test it again after updating the key, you will also need to export it `gpg -a -o /concerto-debian/sample.key --export concerto@concerto-signage.org`.  Then run the ./build_deb_packages.sh again, and it will prompt you for the passphrase. Remember to upload the packages.tar.gz file to the real apt repository.
 
-To prepare for a different release of debian (or ubuntu), you will need to change the distributions file and the build_deb_packages.sh file.  The concerto_{full|lite}/DEBIAN/control file may also need tweaked based on what dependencies have changed. And for testing, you'll probably want to change or add one of the docker/test.*.dockerfiles and perhaps the docker-compose.yml file.
+### Changes for a Different Distribution
+
+To prepare for a different release of Debian (or Ubuntu), you will need to change the distributions file and the build_deb_packages.sh file.  The concerto_{full|lite}/DEBIAN/control file may also need tweaked based on what dependencies have changed. And for testing, you'll probably want to change or add one of the docker/test.*.dockerfiles and perhaps the docker-compose.yml file.
 
 ## Installing the Packages from the Concerto-Signage Repository
 
