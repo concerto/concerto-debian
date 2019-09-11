@@ -94,9 +94,6 @@ echo "  removing old packaging..."
 rm -rf packages.tar.gz packages/
 mkdir -p packages/conf
 cp distributions packages/conf/
-if [ -f sample.key ]; then
-  cp sample.key packages/
-fi
 cd packages
 echo "  preparing concerto_full packages..."
 reprepro --component main --ask-passphrase -vb . includedeb buster ../debs/concerto-full_${control_version}_all.deb
@@ -113,5 +110,17 @@ tar -czf packages.tar.gz packages
 cd packages
 dpkg-scanpackages . | gzip -9c >/tmp/Packages.gz
 mv /tmp/Packages.gz ./
+
+# We have a sample.key when running the builder.dockerfile.
+# If we have a sample key then put it out there so it can be used by add_repo.sh when testing,
+# and put the add_repo.sh script out there as well.
+if [ -f sample.key ]; then
+  echo "copying sample.key to packages directory for testing"
+  cp sample.key packages/concerto_deb_public.key
+  echo "copying add_repo.sh to packages directory for testing"
+  cp add_repo.sh packages/add_repo.sh
+  # change it to point to the builder docker image
+  sed -i "s/dl.concerto-signage.org/builder/g" packages/add_repo.sh
+fi
 
 echo -e "\nfinished"
