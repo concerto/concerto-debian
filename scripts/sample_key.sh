@@ -10,4 +10,4 @@ Name-Email: sample@example.com
 %commit
 EOF
 
-gpg --armor --output /concerto-debian/sample.key --export sample@example.com 
+gpg --armor --output /concerto-debian/concerto_deb_public.key --export sample@example.com 
