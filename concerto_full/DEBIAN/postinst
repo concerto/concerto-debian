@@ -40,7 +40,7 @@ fi
 # use the same version of bundler as the Gemfile
 BUNDLER_VERSION=$(tail -1 /usr/share/concerto/Gemfile.lock)
 
-gem install bundler -v "$BUNDLER_VERSION" --no-ri --no-rdoc
+gem install bundler -v "$BUNDLER_VERSION" --no-document
 cd /usr/share/concerto
 su -s /bin/bash -c 'bundle install --without postgres development --path=vendor/bundle' www-data
 su -s /bin/bash -c 'RAILS_ENV=production bundle exec rake assets:precompile' www-data
